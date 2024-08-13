@@ -97,7 +97,7 @@ class UserDream extends Model<UserDreamAttributes> implements UserDreamAttribute
       },
       {
         sequelize,
-        tableName: 'screenshots',
+        tableName: 'userDreams',
         modelName: 'UserDreams',
       },
     )
