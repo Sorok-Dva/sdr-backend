@@ -1,0 +1,12 @@
+# Exclude All
+**
+
+# Explicit includes
+!@types/
+!@types/**
+!db/
+!db/**
+!src/
+!src/**
+#!test/
+#!test/**
