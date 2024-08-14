@@ -28,6 +28,10 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
       content: {
         type: DataTypes.TEXT,
         allowNull: false,

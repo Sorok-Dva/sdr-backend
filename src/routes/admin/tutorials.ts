@@ -8,12 +8,13 @@ router.use(authenticateToken)
 router.use(isAdmin)
 
 router.post('/', async (req : Request, res : Response) => {
-  const { title, categoryId, content } = req.body
+  const { image, title, categoryId, content } = req.body
   const userId = req.user.id
 
   try {
     const newTutorial = await Tutorial.create({
       userId,
+      image,
       categoryId,
       title,
       content,

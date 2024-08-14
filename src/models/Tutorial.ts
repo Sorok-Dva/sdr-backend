@@ -7,6 +7,7 @@ interface TutorialAttributes {
   userId: number
   categoryId: number
   title: string
+  image: string
   content: string
   views: number
   validated: boolean
@@ -16,7 +17,10 @@ interface TutorialAttributes {
   deletedAt?: Date
 }
 
-type TutorialCreationAttributes = Optional<TutorialAttributes, 'id' | 'views' | 'validated' | 'validatedByUserId'>;
+type TutorialCreationAttributes = Optional<
+  TutorialAttributes,
+  'id' | 'image' | 'views' | 'validated' | 'validatedByUserId'
+>;
 
 class Tutorial extends Model<TutorialAttributes, TutorialCreationAttributes> implements TutorialAttributes {
   public id!: number
@@ -26,6 +30,8 @@ class Tutorial extends Model<TutorialAttributes, TutorialCreationAttributes> imp
   public categoryId!: number
 
   public title!: string
+
+  public image!: string
 
   public content!: string
 
@@ -60,6 +66,10 @@ class Tutorial extends Model<TutorialAttributes, TutorialCreationAttributes> imp
         title: {
           type: DataTypes.STRING,
           allowNull: false,
+        },
+        image: {
+          type: DataTypes.STRING,
+          allowNull: true,
         },
         content: {
           type: DataTypes.TEXT,
