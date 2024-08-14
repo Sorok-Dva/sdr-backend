@@ -44,6 +44,23 @@ dreamsRouter.get('/my', authenticateToken, async (req: Request, res: Response) =
   }))
 })
 
+dreamsRouter.get('/my/last', authenticateToken, async (req: Request, res: Response) => {
+  const dream = await UserDream.findOne({
+    where: {
+      userId: req.user.id,
+      deletedAt: { [Op.is]: null },
+    },
+    order: [['createdAt', 'DESC']],
+  })
+  const count = await UserDream.count({
+    where: {
+      userId: req.user.id,
+      deletedAt: { [Op.is]: null },
+    },
+  })
+  return res.json({ ...dream?.dataValues, total: count })
+})
+
 dreamsRouter.post(
   '/',
   authenticateToken,
