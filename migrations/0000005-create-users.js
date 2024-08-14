@@ -36,6 +36,11 @@ module.exports = {
           key: 'id',
         },
       },
+      points: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+       defaultValue: 0,
+      },
       validated: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
