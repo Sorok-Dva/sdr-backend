@@ -16,14 +16,13 @@ router.get('/', async (req : Request, res : Response) => {
         r.userDreamId,
         MIN(r.createdAt) AS earliestReportDate,
         COUNT(r.id) AS reportCount,
-        s.url AS userDreamUrl,
         u.nickname AS reportedBy,
         u.id AS reportedById
       FROM reports r
-      JOIN userDreams s ON r.userDreamId = s.id
-      JOIN users u ON s.userId = u.id
+      JOIN userDreams ud ON r.userDreamId = ud.id
+      JOIN users u ON ud.userId = u.id
       WHERE r.deletedAt IS NULL
-      GROUP BY r.userDreamId, s.url, u.nickname, u.id
+      GROUP BY r.userDreamId, u.nickname, u.id
       ORDER BY earliestReportDate DESC;
       `,
       {
