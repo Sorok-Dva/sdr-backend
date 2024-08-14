@@ -1,14 +1,11 @@
 import express, { Request, Response } from 'express'
 import { body, validationResult } from 'express-validator'
-import dotenv from 'dotenv'
 import { Op } from 'sequelize'
 import {
   authenticateOptionalToken,
   authenticateToken,
 } from '../middleware/auth'
 import { UserDream } from '../models'
-
-dotenv.config()
 
 const dreamsRouter = express.Router()
 
