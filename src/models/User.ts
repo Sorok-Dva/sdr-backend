@@ -2,18 +2,6 @@ import { DataTypes, Model, Optional, Sequelize } from 'sequelize'
 import { UserDream } from 'src/models/UserDream'
 import { sequelize } from '../sequelize'
 
-/**
- * Represents a user's attributes.
- *
- * @typedef {Object} UserAttributes
- * @property {number} [id] - The unique identifier of the user.
- * @property {string} email - The email address of the user.
- * @property {string} nickname - The nickname of the user.
- * @property {string} [avatar] - The URL of the user's avatar.
- * @property {string} password - The password of the user.
- * @property {Date} [createdAt] - The date and time when the user was created.
- * @property {Date} [updatedAt] - The date and time when the user was last updated.
- */
 interface UserAttributes {
   id?: number
   email: string
@@ -21,6 +9,7 @@ interface UserAttributes {
   avatar?: string
   password: string
   roleId: number
+  points: number
   validated: boolean
   createdAt?: Date
   updatedAt?: Date
@@ -33,7 +22,7 @@ interface UserAttributes {
  * @interface UserCreationAttributes
  * @extends {Optional<UserAttributes, 'id'>}
  */
-type UserCreationAttributes = Optional<UserAttributes, 'id'>
+type UserCreationAttributes = Optional<UserAttributes, 'id' | 'points'>
 
 /**
  * Represents a User.
@@ -41,7 +30,8 @@ type UserCreationAttributes = Optional<UserAttributes, 'id'>
  * @extends Model<UserAttributes>
  * @implements UserAttributes
  */
-class User extends Model<UserAttributes> implements UserAttributes {
+class User extends Model<UserAttributes, UserCreationAttributes>
+  implements UserAttributes {
   public id!: number
 
   public email!: string
@@ -53,6 +43,8 @@ class User extends Model<UserAttributes> implements UserAttributes {
   public password!: string
 
   public roleId!: number
+
+  public points!: number
 
   public validated!: boolean
 
@@ -99,6 +91,11 @@ class User extends Model<UserAttributes> implements UserAttributes {
             model: 'Roles',
             key: 'id',
           },
+        },
+        points: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          defaultValue: 0,
         },
         validated: {
           type: DataTypes.BOOLEAN,
