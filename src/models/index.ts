@@ -3,6 +3,7 @@ import { Event } from './Event'
 import { sequelize } from '../sequelize'
 import { Report } from './Report'
 import { Role } from './Role'
+import { Tutorial } from './Tutorial'
 import { UserDream } from './UserDream'
 
 // Associations
@@ -26,5 +27,6 @@ export {
   Event,
   UserDream,
   Report,
+  Tutorial,
   sequelize,
 }
