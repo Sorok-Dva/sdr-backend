@@ -14,7 +14,7 @@ interface TutorialAttributes {
   validatedByUserId: number
   createdAt?: Date
   updatedAt?: Date
-  deletedAt?: Date
+  deletedAt?: Date | null
 }
 
 type TutorialCreationAttributes = Optional<
@@ -45,7 +45,7 @@ class Tutorial extends Model<TutorialAttributes, TutorialCreationAttributes> imp
 
   public readonly updatedAt!: Date
 
-  public readonly deletedAt!: Date
+  public readonly deletedAt!: Date | null
 
   static initialize (sequelize: Sequelize) {
     this.init(
