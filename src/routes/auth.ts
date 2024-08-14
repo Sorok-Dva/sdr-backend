@@ -4,11 +4,8 @@ import bcrypt from 'bcryptjs'
 import { body, validationResult } from 'express-validator'
 import dotenv from 'dotenv'
 import { Op } from 'sequelize'
-import WebSocket from 'ws'
 import { authenticateToken } from '../middleware/auth'
 import { UserDream, User } from '../models'
-
-const wsClient = new WebSocket.Server({ port: 4242 })
 
 dotenv.config()
 
@@ -107,21 +104,6 @@ authRouter.post(
       }, jwtSecret, { expiresIn: '31d' })
 
       res.status(200).send({ token: userJwt })
-
-      if (wsClient && wsClient.readyState === WebSocket.OPEN) {
-        wsClient.send(JSON.stringify({
-          event: 'login',
-          data: {
-            id: user.id,
-            email: user.email,
-            nickname: user.nickname,
-            avatar: user.avatar,
-            roleId: user.roleId,
-            isAdmin: user.roleId === 1,
-            token: userJwt,
-          },
-        }))
-      }
     } catch (error: any) {
       res.status(500).send({ error })
     }

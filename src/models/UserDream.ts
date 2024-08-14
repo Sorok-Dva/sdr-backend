@@ -10,9 +10,9 @@ interface UserDreamAttributes {
   id?: number
   userId: number
   title: string
-  description: string
+  content: string
   privacy: DreamPrivacy
-  category: DreamCategory
+  // category: DreamCategory
   views: number
   createdAt?: Date
   updatedAt?: Date
@@ -26,7 +26,7 @@ interface UserDreamAttributes {
  * @extends {UserDreamAttributes}
  * @template T - The type of the "id" property
  */
-type UserDreamCreationAttributes = Optional<UserDreamAttributes, 'id' & 'path' & 'views'>
+type UserDreamCreationAttributes = Optional<UserDreamAttributes, 'id' | 'views'>
 
 /**
  * The UserDreams class represents a UserDreams entity in the application.
@@ -36,20 +36,20 @@ type UserDreamCreationAttributes = Optional<UserDreamAttributes, 'id' & 'path' &
  * @extends Model<UserDreamAttributes>
  * @implements UserDreamAttributes
  */
-class UserDream extends Model<UserDreamAttributes> implements UserDreamAttributes {
+class UserDream extends Model<UserDreamAttributes, UserDreamCreationAttributes> implements UserDreamAttributes {
   public id!: number
 
   public userId!: number
 
   public title!: string
 
-  public description!: string
+  public content!: string
 
   public views!: number
 
   public privacy!: DreamPrivacy
 
-  public category!: DreamCategory
+  // public category!: DreamCategory
 
   public readonly createdAt!: Date
 
@@ -73,8 +73,8 @@ class UserDream extends Model<UserDreamAttributes> implements UserDreamAttribute
           type: DataTypes.STRING,
           allowNull: false,
         },
-        description: {
-          type: DataTypes.STRING,
+        content: {
+          type: DataTypes.TEXT,
           allowNull: false,
         },
         views: {
@@ -86,10 +86,10 @@ class UserDream extends Model<UserDreamAttributes> implements UserDreamAttribute
           type: DataTypes.ENUM('public', 'private'),
           allowNull: false,
         },
-        category: {
-          type: DataTypes.ENUM('joy', 'fear'),
-          allowNull: false,
-        },
+        // category: {
+        //   type: DataTypes.ENUM('joy', 'fear'),
+        //   allowNull: false,
+        // },
         deletedAt: {
           type: DataTypes.DATE,
           allowNull: true,

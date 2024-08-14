@@ -9,6 +9,7 @@ import { Sequelize } from 'sequelize'
 import dotenv from 'dotenv'
 import path from 'path'
 import authRouter from './routes/auth'
+import dreamsRouter from './routes/dreams'
 import adminRouter from './routes/admin'
 
 dotenv.config()
@@ -44,6 +45,7 @@ const sequelize = new Sequelize(process.env.DB_NAME || 'screen.me', process.env.
 })
 
 app.use('/api/admin', adminRouter)
+app.use('/api/dreams', dreamsRouter)
 app.use(authRouter)
 
 // Sentry.setupExpressErrorHandler(app)
