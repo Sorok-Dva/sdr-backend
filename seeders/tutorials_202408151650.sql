@@ -1,52 +1,4 @@
 INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,validatedByUserId,createdAt,updatedAt,deletedAt,image,upvote) VALUES
-	 (1,1,'Tutoriel Complet : Technique WILD pour Rêves Lucides','<blockquote class="flaticon-quote">
-<p>La m&eacute;thode WILD, ou <strong>Wake-Initiated Lucid Dream</strong>, est l''une des techniques les plus puissantes pour induire des r&ecirc;ves lucides. Elle consiste &agrave; passer directement d''un &eacute;tat d''&eacute;veil &agrave; un r&ecirc;ve tout en gardant sa conscience active. Cette technique est r&eacute;put&eacute;e pour &ecirc;tre plus avanc&eacute;e, mais avec de la pratique, m&ecirc;me un d&eacute;butant peut y parvenir.</p>
-</blockquote>
-<h2>&Eacute;tape 1 : Pr&eacute;paration Avant de Dormir</h2>
-<p>La pr&eacute;paration est cruciale pour r&eacute;ussir la m&eacute;thode WILD. Voici comment bien vous pr&eacute;parer :</p>
-<ul>
-<li><strong>Cr&eacute;ez un environnement propice au sommeil :</strong> Assurez-vous que votre chambre est calme, sombre, et &agrave; une temp&eacute;rature confortable.</li>
-<li><strong>&Eacute;vitez les distractions :</strong> &Eacute;teignez tous les appareils &eacute;lectroniques qui pourraient vous d&eacute;ranger.</li>
-<li><strong>Relaxation avant de dormir :</strong> Pratiquez des exercices de respiration profonde ou de relaxation musculaire progressive pour d&eacute;tendre votre corps.</li>
-<li><strong>Tenez un journal de r&ecirc;ves :</strong> Noter vos r&ecirc;ves au r&eacute;veil am&eacute;liore la m&eacute;moire des r&ecirc;ves et facilite la reconnaissance des signes de r&ecirc;ve.</li>
-</ul>
-<h2>&Eacute;tape 2 : La Technique WILD</h2>
-<h3>1. Allez vous coucher t&ocirc;t</h3>
-<p>Essayez de vous endormir plus t&ocirc;t que d''habitude, pour vous r&eacute;veiller apr&egrave;s 4 &agrave; 6 heures de sommeil. Cela vous permettra de tomber plus rapidement dans un &eacute;tat de sommeil paradoxal, propice aux r&ecirc;ves lucides.</p>
-<h3>2. R&eacute;veillez-vous apr&egrave;s 4 &agrave; 6 heures de sommeil</h3>
-<p>Mettez une alarme douce pour vous r&eacute;veiller apr&egrave;s 4 &agrave; 6 heures de sommeil. Le r&eacute;veil doit &ecirc;tre suffisamment doux pour que vous ne vous leviez pas compl&egrave;tement, mais assez pour prendre conscience de vous-m&ecirc;me.</p>
-<h3>3. Restez &eacute;veill&eacute; pendant 10 &agrave; 20 minutes</h3>
-<p>Levez-vous, allez aux toilettes si n&eacute;cessaire, buvez un peu d''eau, puis retournez au lit. Ce court moment d''&eacute;veil vous aidera &agrave; maintenir un niveau de conscience plus &eacute;lev&eacute; pendant que votre corps se rendormira.</p>
-<h3>4. D&eacute;tendez-vous et concentrez-vous sur votre respiration</h3>
-<p>Allongez-vous confortablement sur le dos. Fermez les yeux et concentrez-vous sur votre respiration. Respirez profond&eacute;ment et r&eacute;guli&egrave;rement, en vous d&eacute;tendant de plus en plus &agrave; chaque expiration.</p>
-<h3>5. Visualisation et hypnagogie</h3>
-<p>&Agrave; ce stade, vous allez commencer &agrave; ressentir des images ou des sensations connues sous le nom d''hypnagogie. Cela peut inclure des couleurs, des formes, des sons ou des sensations physiques. Observez-les sans vous y attacher, comme si vous regardiez un film. Essayez de rester passif tout en gardant votre conscience active.</p>
-<h3>6. Transition vers le r&ecirc;ve</h3>
-<p>&Agrave; mesure que l''hypnagogie devient plus vivante, commencez &agrave; visualiser une sc&egrave;ne de r&ecirc;ve. Imaginez-vous en train d''interagir avec l''environnement. &Agrave; ce moment, vous pouvez avoir l''impression de "tomber" dans le r&ecirc;ve ou de voir la sc&egrave;ne devenir de plus en plus r&eacute;elle. Essayez de vous immerger doucement dans cette sc&egrave;ne tout en gardant &agrave; l''esprit que vous &ecirc;tes en train de r&ecirc;ver.</p>
-<h3>7. Entrez dans le r&ecirc;ve lucide</h3>
-<p>Si tout se passe bien, vous vous retrouverez directement dans un r&ecirc;ve lucide, en pleine conscience. Restez calme pour &eacute;viter de vous r&eacute;veiller, et commencez &agrave; explorer le r&ecirc;ve &agrave; votre rythme.</p>
-<h2>Conseils pour les D&eacute;butants et les Pratiquants Plus Avanc&eacute;s</h2>
-<h3>Pour les D&eacute;butants</h3>
-<ul>
-<li><strong>Ne vous d&eacute;couragez pas :</strong> La m&eacute;thode WILD demande de la pratique. M&ecirc;me si vous ne r&eacute;ussissez pas du premier coup, chaque tentative est un pas vers la ma&icirc;trise de la technique.</li>
-<li><strong>Pratiquez la relaxation :</strong> Si vous avez du mal &agrave; rester &eacute;veill&eacute; tout en vous endormant, concentrez-vous d''abord sur les techniques de relaxation avant de passer au WILD.</li>
-</ul>
-<h3>Pour les Pratiquants Avanc&eacute;s</h3>
-<ul>
-<li><strong>Int&eacute;grez des mantras :</strong> R&eacute;p&eacute;tez mentalement une phrase comme "Je vais rester conscient" pendant que vous vous endormez pour renforcer votre intention.</li>
-<li><strong>Affinez votre visualisation :</strong> Travaillez &agrave; rendre vos visualisations de plus en plus d&eacute;taill&eacute;es et r&eacute;alistes pour faciliter la transition vers le r&ecirc;ve.</li>
-<li><strong>Explorez diff&eacute;rentes sensations :</strong> Si les visualisations visuelles ne fonctionnent pas bien, essayez de vous concentrer sur des sensations tactiles (comme sentir un objet dans votre main) pour entrer dans le r&ecirc;ve.</li>
-</ul>
-<h2>Probl&egrave;mes Courants et Comment les Surmonter</h2>
-<p>Voici quelques d&eacute;fis courants auxquels vous pourriez faire face lors de la pratique de la m&eacute;thode WILD, ainsi que des solutions pour les surmonter :</p>
-<ul>
-<li><strong>Endormissement trop rapide :</strong> Si vous vous endormez avant d''entrer dans le r&ecirc;ve lucide, essayez de rester l&eacute;g&egrave;rement plus &eacute;veill&eacute; en vous concentrant davantage sur votre respiration ou en utilisant une technique comme compter vos respirations.</li>
-<li><strong>Sur-r&eacute;veil :</strong> Si vous restez trop &eacute;veill&eacute; et que vous avez du mal &agrave; vous rendormir, essayez de vous d&eacute;tendre davantage et de ne pas vous focaliser trop intens&eacute;ment sur la technique.</li>
-<li><strong>Manque de clart&eacute; dans le r&ecirc;ve :</strong> Si votre r&ecirc;ve est flou ou peu clair, essayez de stabiliser le r&ecirc;ve en touchant des objets dans le r&ecirc;ve, en tournant sur vous-m&ecirc;me, ou en r&eacute;p&eacute;tant &agrave; voix haute "Clart&eacute; maintenant".</li>
-</ul>
-<h2>Conclusion</h2>
-<p>La m&eacute;thode WILD est une technique puissante mais qui n&eacute;cessite de la pratique et de la patience. En suivant ces &eacute;tapes et en pers&eacute;v&eacute;rant, vous pourrez apprendre &agrave; entrer directement dans des r&ecirc;ves lucides et &agrave; en profiter pleinement. N''oubliez pas de tenir un journal de r&ecirc;ves pour suivre vos progr&egrave;s et d''ajuster votre approche en fonction de vos exp&eacute;riences.</p>
-<p><span style="text-decoration: underline;"><em>Bonne chance dans votre aventure de r&ecirc;ve lucide !</em></span></p>',112,0,NULL,'2024-08-14 18:46:33','2024-08-15 07:27:18','2024-08-15 07:27:18',NULL,0),
 	 (1,1,'Technique WILD pour Rêves Lucides','<h2>Tutoriel Complet : Technique WILD pour R&ecirc;ves Lucides</h2>
 <p>La m&eacute;thode WILD, ou <strong>Wake-Initiated Lucid Dream</strong>, est l''une des techniques les plus puissantes pour induire des r&ecirc;ves lucides. Elle consiste &agrave; passer directement d''un &eacute;tat d''&eacute;veil &agrave; un r&ecirc;ve tout en gardant sa conscience active. Cette technique est r&eacute;put&eacute;e pour &ecirc;tre plus avanc&eacute;e, mais avec de la pratique, m&ecirc;me un d&eacute;butant peut y parvenir.</p>
 <h3>&Eacute;tape 1 : Pr&eacute;paration Avant de Dormir</h3>
@@ -134,7 +86,7 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 </div>
 <footer>
 <p>Pour plus d''informations sur les r&ecirc;ves lucides et d''autres techniques, visitez notre site : <a style="color: #00ffff;" href="../../tutorials" target="_blank" rel="noopener">Tout nos tutoriels &amp; guides</a></p>
-</footer>',13,1,1,'2024-08-15 11:35:56','2024-08-15 13:06:00',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723721697993-709028145.png',0),
+</footer>',21,1,1,'2024-08-15 11:35:56','2024-08-15 14:16:10',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723721697993-709028145.png',1),
 	 (1,1,'Tutoriel Complet sur la Méthode WILD','<blockquote class="flaticon-promotion">
 <p>Bienvenue dans ce guide d&eacute;taill&eacute; sur la <strong>m&eacute;thode WILD</strong> (Wake-Induced Lucid Dream - R&ecirc;ves Lucides avec Maintien de Conscience). Cette m&eacute;thode est particuli&egrave;rement puissante, car elle vous permet d''entrer directement dans un r&ecirc;ve lucide tout en restant conscient pendant la transition entre l''&eacute;veil et le sommeil.</p>
 </blockquote>
@@ -187,7 +139,7 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 </div>
 <footer>
 <p>Pour plus d''informations sur les r&ecirc;ves lucides et d''autres techniques, jettez un oeil &agrave; nos autres tutoriels : <a style="color: #dda0dd;" href="../" target="_blank" rel="noopener">Tout nos tutoriels &amp; guides</a></p>
-</footer>',8,1,1,'2024-08-15 11:58:52','2024-08-15 12:00:55',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723722781810-593638921.png',0),
+</footer>',30,1,1,'2024-08-15 11:58:52','2024-08-15 14:13:42',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723722781810-593638921.png',1),
 	 (1,1,'Tutoriel Complet sur la Méthode DEILD','<blockquote>
 <p>Bienvenue dans ce guide complet sur la <strong>m&eacute;thode DEILD</strong> (Dream Exit Induced Lucid Dream - R&ecirc;ve Lucide Induit par R&eacute;veil R&eacute;p&eacute;t&eacute;). La m&eacute;thode DEILD est une technique efficace pour encha&icirc;ner plusieurs r&ecirc;ves lucides ou pour entrer dans un r&ecirc;ve lucide imm&eacute;diatement apr&egrave;s un r&eacute;veil. Cette m&eacute;thode est particuli&egrave;rement int&eacute;ressante pour ceux qui souhaitent prolonger un r&ecirc;ve lucide ou en recommencer un apr&egrave;s une interruption.</p>
 </blockquote>
@@ -266,7 +218,7 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 </div>
 <footer>
 <p>Pour plus d''informations sur les r&ecirc;ves lucides et d''autres techniques, visitez notre autres : <a style="color: #66cdaa;" href="../../../tutorials" target="_blank" rel="noopener">Tutoriels &amp; guides</a></p>
-</footer>',4,1,1,'2024-08-15 12:17:24','2024-08-15 12:22:14',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723724136076-86097180.png',0),
+</footer>',30,1,1,'2024-08-15 12:17:24','2024-08-15 14:15:44',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723724136076-86097180.png',0),
 	 (1,1,'Tutoriel Complet sur la Méthode SSILD','<blockquote>
 <p>Bienvenue dans ce guide sur la <strong>m&eacute;thode SSILD</strong> (Senses Initiated Lucid Dream), une technique de r&ecirc;ve lucide qui se concentre sur l''activation et l''observation de vos sens pour vous aider &agrave; entrer dans un &eacute;tat de r&ecirc;ve lucide. Cette m&eacute;thode est simple mais &eacute;tonnamment efficace, m&ecirc;me pour les d&eacute;butants.</p>
 </blockquote>
@@ -343,7 +295,7 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 </div>
 <footer>
 <p>Pour plus d''informations sur les r&ecirc;ves lucides et d''autres techniques, visitez nos autres : <a style="color: #daa520;" href="../../tutorials" target="_blank" rel="noopener">Tutoriels &amp; guides</a></p>
-</footer>',2,1,1,'2024-08-15 12:31:30','2024-08-15 12:31:30',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723725061968-323842965.png',0),
+</footer>',4,1,1,'2024-08-15 12:31:30','2024-08-15 13:24:12',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723725061968-323842965.png',1),
 	 (1,1,'Tutoriel Complet sur la Méthode ART','<blockquote>
 <p>Bienvenue dans ce guide d&eacute;taill&eacute; sur la <strong>m&eacute;thode ART</strong> (Artistic Response Test). Cette technique est con&ccedil;ue pour pr&eacute;dire l''arriv&eacute;e du sommeil paradoxal (REM), et donc le moment optimal pour tenter d''induire un r&ecirc;ve lucide. ART se base sur des associations cr&eacute;atives, qui permettent de jauger votre proximit&eacute; avec le sommeil REM.</p>
 </blockquote>
@@ -413,8 +365,7 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 </div>
 <footer>
 <p>Pour plus d''informations sur les r&ecirc;ves lucides et d''autres techniques, visitez nos autres : <a style="color: #32cd32;" href="../../tutorials" target="_blank" rel="noopener">Tutoriels &amp; guides</a></p>
-</footer>',2,1,1,'2024-08-15 12:40:52','2024-08-15 12:40:52',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723725633783-834572926.png',0);
-INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,validatedByUserId,createdAt,updatedAt,deletedAt,image,upvote) VALUES
+</footer>',2,1,1,'2024-08-15 12:40:52','2024-08-15 12:40:52',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723725633783-834572926.png',0),
 	 (1,1,'Tutoriel Complet sur la Méthode VILD','<blockquote>
 <p>Bienvenue dans ce guide d&eacute;taill&eacute; sur la <strong>m&eacute;thode VILD</strong> (Visual Induction of Lucid Dreams). Cette technique repose sur la visualisation r&eacute;p&eacute;t&eacute;e d''un sc&eacute;nario de r&ecirc;ve, ce qui augmente vos chances de devenir lucide une fois que vous entrez dans le sommeil. VILD est particuli&egrave;rement efficace pour ceux qui ont une imagination vive.</p>
 </blockquote>
@@ -450,7 +401,8 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 </div>
 <footer>
 <p>Pour plus d''informations sur les r&ecirc;ves lucides et d''autres techniques, visitez nos autres : <a style="color: #ff69b4;" href="../../tutorials" target="_blank" rel="noopener">Tutoriels &amp; guides</a></p>
-</footer>',2,1,1,'2024-08-15 12:44:55','2024-08-15 12:44:55',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723725876277-960919100.png',0),
+</footer>',2,1,1,'2024-08-15 12:44:55','2024-08-15 12:44:55',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723725876277-960919100.png',0);
+INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,validatedByUserId,createdAt,updatedAt,deletedAt,image,upvote) VALUES
 	 (1,1,'Tutoriel Complet sur la Méthode WBTB','<blockquote>
 <p>Bienvenue dans ce guide d&eacute;taill&eacute; sur la <strong>m&eacute;thode WBTB</strong> (Wake Back to Bed), une technique populaire pour induire des r&ecirc;ves lucides. WBTB est efficace car elle exploite les cycles de sommeil naturels, vous permettant de vous r&eacute;veiller au moment id&eacute;al pour entrer dans un r&ecirc;ve lucide.</p>
 </blockquote>
@@ -609,4 +561,188 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 </div>
 <footer>
 <p>Pour plus d''informations sur les r&ecirc;ves lucides et d''autres techniques, visitez nos : <a style="color: #ff6347;" href="../../tutorials" target="_blank" rel="noopener">Tutoriels &amp; guides</a></p>
-</footer>',2,1,1,'2024-08-15 13:02:26','2024-08-15 13:02:27',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723726912586-296161982.png',0);
+</footer>',2,1,1,'2024-08-15 13:02:26','2024-08-15 13:02:27',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723726912586-296161982.png',0),
+	 (1,1,'Maîtriser le Rêve Lucide en 7 Jours','<blockquote>
+<p>Ce guide structur&eacute; vous guidera &agrave; travers un programme de sept jours pour d&eacute;velopper vos comp&eacute;tences en r&ecirc;ve lucide. Chaque jour, vous apprendrez et pratiquerez des techniques sp&eacute;cifiques qui vous rapprocheront de la ma&icirc;trise du r&ecirc;ve lucide.</p>
+</blockquote>
+<h2>Jour 1 : Comprendre les Bases et Tenir un Journal de R&ecirc;ves</h2>
+<div class="steps">
+<h3>1.1. Introduction au r&ecirc;ve lucide</h3>
+<p>Avant de commencer, assurez-vous de bien comprendre ce qu''est un r&ecirc;ve lucide. Un r&ecirc;ve lucide est un r&ecirc;ve o&ugrave; vous &ecirc;tes conscient de r&ecirc;ver, ce qui vous permet de contr&ocirc;ler certains aspects du r&ecirc;ve.</p>
+<h3>1.2. Tenir un Journal de R&ecirc;ves</h3>
+<p>Commencez par tenir un <strong>journal de r&ecirc;ves</strong>. Chaque matin, notez tous les r&ecirc;ves dont vous vous souvenez, m&ecirc;me les moindres d&eacute;tails. Cela am&eacute;liorera votre capacit&eacute; &agrave; vous souvenir de vos r&ecirc;ves, une &eacute;tape cruciale pour devenir lucide.</p>
+<div class="highlight">
+<p class="tips">Astuce : Gardez votre journal de r&ecirc;ves pr&egrave;s de votre lit pour noter vos r&ecirc;ves imm&eacute;diatement apr&egrave;s votre r&eacute;veil. Essayez de vous rappeler des &eacute;motions, des lieux, des personnages et des &eacute;v&eacute;nements de vos r&ecirc;ves.</p>
+</div>
+</div>
+<h2>Jour 2 : Apprendre les Tests de R&eacute;alit&eacute;</h2>
+<div class="steps">
+<h3>2.1. Introduction aux Tests de R&eacute;alit&eacute;</h3>
+<p>Les <strong>tests de r&eacute;alit&eacute;</strong> sont des exercices que vous faites tout au long de la journ&eacute;e pour habituer votre esprit &agrave; v&eacute;rifier si vous &ecirc;tes en train de r&ecirc;ver. Cela augmente la probabilit&eacute; que vous fassiez un test de r&eacute;alit&eacute; dans un r&ecirc;ve.</p>
+<h3>2.2. Choisissez vos Tests de R&eacute;alit&eacute;</h3>
+<p>Choisissez deux ou trois tests de r&eacute;alit&eacute; fiables, tels que :</p>
+<ul>
+<li><strong>Test du pincement de nez :</strong> Pincez-vous le nez et essayez de respirer. Si vous pouvez respirer, vous &ecirc;tes en train de r&ecirc;ver.</li>
+<li><strong>Test de la montre num&eacute;rique :</strong> Regardez une montre num&eacute;rique, d&eacute;tournez le regard, puis regardez &agrave; nouveau. Si les chiffres changent de mani&egrave;re &eacute;trange, vous &ecirc;tes probablement dans un r&ecirc;ve.</li>
+</ul>
+<h3>2.3. Pratiquez les Tests de R&eacute;alit&eacute;</h3>
+<p>Faites ces tests de r&eacute;alit&eacute; plusieurs fois par jour, en particulier lorsque vous vous trouvez dans des situations &eacute;tranges ou inhabituelles. Soyez conscient et posez-vous la question : <code>"Suis-je en train de r&ecirc;ver&nbsp;?"</code>.</p>
+<div class="highlight">
+<p class="important">Important : Pour que les tests de r&eacute;alit&eacute; soient efficaces, vous devez vraiment vous attendre &agrave; ce que vous soyez dans un r&ecirc;ve. Ne faites pas ces tests machinalement, mais avec une r&eacute;elle intention.</p>
+</div>
+</div>
+<h2>Jour 3 : Techniques de Relaxation et de Visualisation</h2>
+<div class="steps">
+<h3>3.1. Introduction &agrave; la Relaxation</h3>
+<p>Apprendre &agrave; se d&eacute;tendre est essentiel pour r&eacute;ussir &agrave; entrer dans un r&ecirc;ve lucide. La relaxation aide &agrave; calmer l''esprit et &agrave; faciliter la transition vers le sommeil tout en maintenant une certaine conscience.</p>
+<h3>3.2. Pratique de la Relaxation Progressive</h3>
+<p>Chaque soir avant de dormir, pratiquez la <strong>relaxation progressive</strong>. Allongez-vous confortablement et concentrez-vous sur chaque partie de votre corps, en commen&ccedil;ant par les orteils et en remontant jusqu''&agrave; la t&ecirc;te. Rel&acirc;chez chaque muscle et sentez la tension dispara&icirc;tre.</p>
+<h3>3.3. Techniques de Visualisation</h3>
+<p>Apr&egrave;s la relaxation, commencez &agrave; visualiser un sc&eacute;nario de r&ecirc;ve sp&eacute;cifique. Imaginez-vous dans un environnement de r&ecirc;ve et essayez de le rendre aussi d&eacute;taill&eacute; que possible. Visualisez-vous en train de devenir lucide dans ce r&ecirc;ve.</p>
+<div class="highlight">
+<p class="tips">Astuce : Choisissez un sc&eacute;nario de r&ecirc;ve simple pour la visualisation, comme &ecirc;tre dans une pi&egrave;ce que vous connaissez bien. Imaginez des d&eacute;tails pr&eacute;cis, comme les couleurs, les sons, et les sensations.</p>
+</div>
+</div>
+<h2>Jour 4 : D&eacute;couverte de la M&eacute;thode MILD (Induction Mn&eacute;monique des R&ecirc;ves Lucides)</h2>
+<div class="steps">
+<h3>4.1. Qu''est-ce que MILD&nbsp;?</h3>
+<p>La <strong>m&eacute;thode MILD</strong> (Induction Mn&eacute;monique des R&ecirc;ves Lucides) est une technique puissante qui repose sur la fixation d''une intention claire de se souvenir que vous r&ecirc;vez. Cette m&eacute;thode utilise la m&eacute;moire prospective pour d&eacute;clencher la lucidit&eacute; dans un r&ecirc;ve.</p>
+<h3>4.2. Pratique de MILD</h3>
+<p>Avant de dormir, r&eacute;p&eacute;tez-vous : <code>"La prochaine fois que je r&ecirc;ve, je me souviendrai que je r&ecirc;ve."</code>. R&eacute;p&eacute;tez cette phrase plusieurs fois tout en vous visualisant dans un r&ecirc;ve o&ugrave; vous devenez lucide. Imaginez-vous reconna&icirc;tre les signes du r&ecirc;ve et prendre le contr&ocirc;le.</p>
+<h3>4.3. Combiner MILD avec la Relaxation</h3>
+<p>Combinez la m&eacute;thode MILD avec les techniques de relaxation et de visualisation que vous avez apprises le jour pr&eacute;c&eacute;dent. Cela renforcera votre capacit&eacute; &agrave; devenir lucide en r&ecirc;ve.</p>
+<div class="highlight">
+<p class="important">Important : Soyez patient avec MILD. Cette m&eacute;thode n&eacute;cessite de la pratique et de la r&eacute;p&eacute;tition pour &ecirc;tre efficace, mais elle est tr&egrave;s puissante lorsqu''elle est ma&icirc;tris&eacute;e.</p>
+</div>
+</div>
+<h2>Jour 5 : Introduction &agrave; la M&eacute;thode WBTB (Wake Back to Bed)</h2>
+<div class="steps">
+<h3>5.1. Qu''est-ce que WBTB&nbsp;?</h3>
+<p>La m&eacute;thode <strong>WBTB</strong> (Wake Back to Bed) consiste &agrave; se r&eacute;veiller apr&egrave;s 4 &agrave; 6 heures de sommeil, &agrave; rester &eacute;veill&eacute; pendant 10 &agrave; 30 minutes, puis &agrave; se recoucher avec l''intention de devenir lucide. Cette technique est particuli&egrave;rement efficace pour entrer en r&ecirc;ve lucide.</p>
+<h3>5.2. Planifier votre R&eacute;veil</h3>
+<p>R&eacute;glez une alarme pour vous r&eacute;veiller apr&egrave;s 4 &agrave; 6 heures de sommeil. Une fois r&eacute;veill&eacute;, levez-vous et faites une activit&eacute; calme, comme lire sur les r&ecirc;ves lucides ou pratiquer la m&eacute;ditation. &Eacute;vitez les lumi&egrave;res vives et les &eacute;crans pendant ce temps.</p>
+<h3>5.3. Retourner au Lit</h3>
+<p>Apr&egrave;s 10 &agrave; 30 minutes, retournez vous coucher en pratiquant la m&eacute;thode MILD ou une autre technique de votre choix. Concentrez-vous sur votre intention de devenir lucide en r&ecirc;ve.</p>
+<div class="highlight">
+<p class="tips">Astuce : Si vous avez du mal &agrave; vous rendormir apr&egrave;s WBTB, essayez de r&eacute;duire le temps que vous passez &eacute;veill&eacute; &agrave; 5 ou 10 minutes.</p>
+</div>
+</div>
+<h2>Jour 6 : Exploration des Signes de R&ecirc;ve et des Sc&eacute;narios R&eacute;p&eacute;titifs</h2>
+<div class="steps">
+<h3>6.1. Identifier les Signes de R&ecirc;ve</h3>
+<p>Les <strong>signes de r&ecirc;ve</strong> sont des &eacute;l&eacute;ments r&eacute;currents dans vos r&ecirc;ves qui peuvent vous aider &agrave; reconna&icirc;tre que vous &ecirc;tes en train de r&ecirc;ver. Il peut s''agir de lieux, de personnes, ou d''&eacute;v&eacute;nements qui apparaissent fr&eacute;quemment dans vos r&ecirc;ves.</p>
+<h3>6.2. Analyser votre Journal de R&ecirc;ves</h3>
+<p>Relisez votre journal de r&ecirc;ves et identifiez les motifs ou les th&egrave;mes qui reviennent souvent. Notez ces signes de r&ecirc;ve et utilisez-les pour vous aider &agrave; devenir lucide dans vos futurs r&ecirc;ves.</p>
+<h3>6.3. Pratiquez la Visualisation avec les Signes de R&ecirc;ve</h3>
+<p>Avant de dormir, visualisez un sc&eacute;nario o&ugrave; vous rencontrez l''un de vos signes de r&ecirc;ve et r&eacute;alisez que vous &ecirc;tes en train de r&ecirc;ver. Cela entra&icirc;nera votre esprit &agrave; reconna&icirc;tre ces signes lorsqu''ils apparaissent dans vos r&ecirc;ves.</p>
+<div class="highlight">
+<p class="important">Important : Soyez attentif &agrave; tout changement dans les signes de r&ecirc;ve. Vos r&ecirc;ves peuvent &eacute;voluer avec le temps, il est donc important de continuer &agrave; analyser votre journal de r&ecirc;ves r&eacute;guli&egrave;rement.</p>
+</div>
+</div>
+<h2>Jour 7 : Combinaison des Techniques et Exp&eacute;rimentation</h2>
+<div class="steps">
+<h3>7.1. Combiner les Techniques</h3>
+<p>Le dernier jour, concentrez-vous sur la <strong>combinaison des techniques</strong> que vous avez apprises. Par exemple, vous pouvez combiner WBTB avec MILD, ou utiliser la relaxation et la visualisation avant de dormir pour renforcer MILD.</p>
+<h3>7.2. Exp&eacute;rimentez avec Diff&eacute;rentes Approches</h3>
+<p>Essayez diff&eacute;rentes combinaisons et ajustez-les en fonction de ce qui fonctionne le mieux pour vous. Chaque personne est diff&eacute;rente, et il peut &ecirc;tre utile de personnaliser les techniques en fonction de vos besoins sp&eacute;cifiques.</p>
+<h3>7.3. R&eacute;capitulation et Suivi</h3>
+<p>Terminez votre semaine en r&eacute;capitulant ce que vous avez appris. Continuez &agrave; pratiquer r&eacute;guli&egrave;rement, m&ecirc;me apr&egrave;s ces sept jours, pour renforcer vos comp&eacute;tences en r&ecirc;ve lucide. Tenez un journal de vos progr&egrave;s et ajustez votre approche au fil du temps.</p>
+<div class="highlight">
+<p class="important">Rappelez-vous : La ma&icirc;trise du r&ecirc;ve lucide est un processus continu. M&ecirc;me apr&egrave;s avoir suivi ce programme, continuez &agrave; pratiquer et &agrave; affiner vos techniques pour devenir un r&ecirc;veur lucide exp&eacute;riment&eacute;.</p>
+</div>
+</div>',2,0,NULL,'2024-08-15 14:41:50','2024-08-15 14:41:51',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723732867842-618075748.png',0),
+	 (1,1,'Comprendre les Symboles Oniriques','<blockquote>
+<p>Les symboles oniriques sont des &eacute;l&eacute;ments de vos r&ecirc;ves qui repr&eacute;sentent des id&eacute;es, des &eacute;motions ou des aspects de votre vie. Apprendre &agrave; interpr&eacute;ter ces symboles peut vous aider &agrave; mieux comprendre votre subconscient, &agrave; r&eacute;soudre des probl&egrave;mes personnels, et &agrave; enrichir votre exp&eacute;rience de r&ecirc;ve lucide.</p>
+</blockquote>
+<h2>Qu''est-ce qu''un Symbole Onirique&nbsp;?</h2>
+<div class="steps">
+<h3>D&eacute;finition des Symboles Oniriques</h3>
+<p>Un symbole onirique est un objet, une personne, un lieu, ou une situation dans un r&ecirc;ve qui a une signification particuli&egrave;re pour le r&ecirc;veur. Contrairement &agrave; ce qu''il peut para&icirc;tre, ces symboles ne doivent pas toujours &ecirc;tre pris au pied de la lettre. Ils repr&eacute;sentent souvent quelque chose de plus profond, comme une &eacute;motion, une peur, un d&eacute;sir, ou une situation de la vie r&eacute;elle.</p>
+<h3>Interpr&eacute;tation Personnelle</h3>
+<p>Il est important de noter que les symboles oniriques sont <strong>hautement personnels</strong>. Un symbole peut avoir une signification pour une personne, et une tout autre signification pour quelqu''un d''autre. Par exemple, un chien dans un r&ecirc;ve peut repr&eacute;senter la loyaut&eacute; pour une personne, mais la peur pour une autre.</p>
+<div class="highlight">
+<p class="important">Important : &Eacute;vitez les livres d''interpr&eacute;tation des r&ecirc;ves qui donnent des significations universelles aux symboles. Concentrez-vous sur ce que le symbole signifie pour vous personnellement.</p>
+</div>
+</div>
+<h2>Types Courants de Symboles Oniriques</h2>
+<div class="steps">
+<h3>Objets</h3>
+<p>Les objets dans vos r&ecirc;ves peuvent repr&eacute;senter des aspects de votre vie quotidienne ou des sentiments sp&eacute;cifiques. Par exemple :</p>
+<ul>
+<li><strong>Cl&eacute;s :</strong> Peuvent symboliser la d&eacute;couverte, la connaissance ou la solution &agrave; un probl&egrave;me.</li>
+<li><strong>Eau :</strong> Souvent associ&eacute;e aux &eacute;motions, elle peut repr&eacute;senter la clart&eacute;, la purification, ou le subconscient.</li>
+<li><strong>Maison :</strong> Repr&eacute;sente souvent le moi int&eacute;rieur, la s&eacute;curit&eacute;, ou la famille.</li>
+</ul>
+<h3>Personnes</h3>
+<p>Les personnes dans vos r&ecirc;ves peuvent repr&eacute;senter des aspects de vous-m&ecirc;me ou des relations dans votre vie. Par exemple :</p>
+<ul>
+<li><strong>Parents :</strong> Repr&eacute;sentent souvent l''autorit&eacute;, la protection, ou des aspects de votre propre personnalit&eacute;.</li>
+<li><strong>&Eacute;tranger :</strong> Peut symboliser une partie inconnue de vous-m&ecirc;me ou une nouvelle opportunit&eacute;.</li>
+<li><strong>Enfant :</strong> Symbolise l''innocence, le potentiel, ou un d&eacute;sir de renouveau.</li>
+</ul>
+<h3>Animaux</h3>
+<p>Les animaux sont des symboles puissants dans les r&ecirc;ves, souvent li&eacute;s &agrave; des instincts ou des &eacute;motions primaires. Par exemple :</p>
+<ul>
+<li><strong>Serpent :</strong> Peut repr&eacute;senter la transformation, la gu&eacute;rison, ou une menace cach&eacute;e.</li>
+<li><strong>Oiseau :</strong> Symbolise la libert&eacute;, la spiritualit&eacute;, ou le d&eacute;sir de s''&eacute;chapper d''une situation.</li>
+<li><strong>Chat :</strong> Associ&eacute; &agrave; l''ind&eacute;pendance, l''intuition, ou le myst&egrave;re.</li>
+</ul>
+<h3>Lieux</h3>
+<p>Les lieux dans vos r&ecirc;ves peuvent refl&eacute;ter votre &eacute;tat &eacute;motionnel ou votre situation actuelle. Par exemple :</p>
+<ul>
+<li><strong>&Eacute;cole :</strong> Peut symboliser l''apprentissage, l''ins&eacute;curit&eacute;, ou des d&eacute;fis &agrave; relever.</li>
+<li><strong>For&ecirc;t :</strong> Repr&eacute;sente souvent l''inconnu, l''inconscient, ou une exploration int&eacute;rieure.</li>
+<li><strong>Mer :</strong> Symbole de l''inconscient, de l''&eacute;motion profonde, ou du voyage int&eacute;rieur.</li>
+</ul>
+</div>
+<h2>Comment Interpr&eacute;ter Vos Propres Symboles Oniriques</h2>
+<div class="steps">
+<h3>1. Tenir un Journal de R&ecirc;ves</h3>
+<p>La premi&egrave;re &eacute;tape pour comprendre vos symboles oniriques est de <strong>tenir un journal de r&ecirc;ves</strong>. Notez chaque matin vos r&ecirc;ves en d&eacute;tail, en particulier les &eacute;l&eacute;ments qui se r&eacute;p&egrave;tent ou qui semblent avoir une signification particuli&egrave;re.</p>
+<h3>2. Analyser les Symboles R&eacute;p&eacute;titifs</h3>
+<p>Identifiez les symboles qui apparaissent r&eacute;guli&egrave;rement dans vos r&ecirc;ves. Ces symboles sont souvent li&eacute;s &agrave; des aspects importants de votre vie consciente, comme des peurs, des d&eacute;sirs, ou des situations stressantes.</p>
+<h3>3. Associer les Symboles &agrave; Vos &Eacute;motions</h3>
+<p>Pensez &agrave; ce que chaque symbole &eacute;voque &eacute;motionnellement pour vous. Par exemple, si un certain lieu dans vos r&ecirc;ves vous fait sentir en s&eacute;curit&eacute; ou anxieux, cela peut r&eacute;v&eacute;ler des sentiments cach&eacute;s sur une situation r&eacute;elle.</p>
+<h3>4. Relier les Symboles &agrave; Votre Vie &Eacute;veill&eacute;e</h3>
+<p>Essayez de faire le lien entre les symboles de vos r&ecirc;ves et votre vie &eacute;veill&eacute;e. Par exemple, si vous r&ecirc;vez souvent de perdre vos cl&eacute;s, cela pourrait symboliser un sentiment de perte de contr&ocirc;le ou d''incertitude dans votre vie quotidienne.</p>
+<div class="highlight">
+<p class="tips">Astuce : Ne cherchez pas de signification compliqu&eacute;e. Les symboles oniriques sont souvent des m&eacute;taphores simples pour des &eacute;motions ou des situations que vous vivez dans la r&eacute;alit&eacute;.</p>
+</div>
+</div>
+<h2>Symboles Oniriques et R&ecirc;ves Lucides</h2>
+<div class="steps">
+<h3>1. Utiliser les Symboles pour D&eacute;clencher la Lucidit&eacute;</h3>
+<p>Lorsque vous identifiez des symboles r&eacute;currents dans vos r&ecirc;ves, vous pouvez les utiliser pour d&eacute;clencher la lucidit&eacute;. Par exemple, si vous r&ecirc;vez souvent de voler, entra&icirc;nez-vous &agrave; reconna&icirc;tre ce symbole comme un signe que vous &ecirc;tes en train de r&ecirc;ver.</p>
+<h3>2. Pratique de la Visualisation</h3>
+<p>Avant de dormir, visualisez un sc&eacute;nario o&ugrave; vous rencontrez un symbole r&eacute;current et r&eacute;alisez que vous &ecirc;tes en train de r&ecirc;ver. Cette technique peut renforcer votre capacit&eacute; &agrave; devenir lucide en pr&eacute;sence de ce symbole.</p>
+<h3>3. Interagir avec les Symboles en R&ecirc;ve Lucide</h3>
+<p>Une fois que vous &ecirc;tes lucide dans un r&ecirc;ve, vous pouvez interagir directement avec les symboles oniriques pour mieux comprendre leur signification. Par exemple, si un animal appara&icirc;t souvent dans vos r&ecirc;ves, vous pouvez lui poser des questions pour explorer ce qu''il repr&eacute;sente dans votre inconscient.</p>
+<h3>4. Utiliser les Symboles comme Ancrage</h3>
+<p>Les symboles peuvent &eacute;galement servir d''ancrage pour maintenir la lucidit&eacute;. En vous concentrant sur un symbole particulier, vous pouvez stabiliser le r&ecirc;ve et prolonger votre &eacute;tat lucide.</p>
+<div class="highlight">
+<p class="important">Important : Lors de l''interaction avec les symboles en r&ecirc;ve lucide, restez ouvert &agrave; ce que votre inconscient peut r&eacute;v&eacute;ler. Ne forcez pas les r&eacute;ponses, mais laissez le r&ecirc;ve vous guider.</p>
+</div>
+</div>
+<h2>Exemples de Symboles Oniriques et Leur Exploration</h2>
+<div class="steps">
+<h3>Exemple 1 : R&ecirc;ver de Voler</h3>
+<p><strong>Signification Possible :</strong> Le vol dans un r&ecirc;ve peut symboliser un d&eacute;sir de libert&eacute;, d''&eacute;vasion ou de transcendance. Cela peut &eacute;galement repr&eacute;senter un sentiment de contr&ocirc;le ou de puissance dans votre vie &eacute;veill&eacute;e.</p>
+<h3>Exemple 2 : R&ecirc;ver d''une Maison Abandonn&eacute;e</h3>
+<p><strong>Signification Possible :</strong> Une maison abandonn&eacute;e peut repr&eacute;senter des parties de vous-m&ecirc;me ou de votre pass&eacute; que vous avez n&eacute;glig&eacute;es ou oubli&eacute;es. Cela pourrait indiquer un besoin de revisiter et de gu&eacute;rir des aspects de votre vie.</p>
+<h3>Exemple 3 : R&ecirc;ver de la Mort</h3>
+<p><strong>Signification Possible :</strong> R&ecirc;ver de la mort n''est pas n&eacute;cessairement n&eacute;gatif. Cela peut symboliser la fin d''une phase et le d&eacute;but d''une nouvelle, ou un profond changement dans votre vie.</p>
+</div>
+<h2>Conseils pour Approfondir Votre Compr&eacute;hension des Symboles Oniriques</h2>
+<div class="steps">
+<h3>1. Pratique R&eacute;guli&egrave;re</h3>
+<p>Comme pour toute comp&eacute;tence, la compr&eacute;hension des symboles oniriques s''am&eacute;liore avec la pratique. Continuez &agrave; tenir votre journal de r&ecirc;ves et &agrave; r&eacute;fl&eacute;chir sur les symboles que vous y trouvez.</p>
+<h3>2. Partager et Discuter</h3>
+<p>Partagez vos r&ecirc;ves et les symboles que vous avez identifi&eacute;s avec d''autres personnes int&eacute;ress&eacute;es par l''interpr&eacute;tation des r&ecirc;ves. Les perspectives ext&eacute;rieures peuvent parfois r&eacute;v&eacute;ler des significations que vous n''aviez pas envisag&eacute;es.</p>
+<h3>3. Lire et Apprendre</h3>
+<p>Explorez des livres et des ressources en ligne sur l''interpr&eacute;tation des r&ecirc;ves et la psychologie des r&ecirc;ves. Des ouvrages de Carl Jung, par exemple, peuvent offrir des aper&ccedil;us profonds sur l''importance des symboles oniriques.</p>
+<div class="highlight">
+<p class="tips">Astuce : N''h&eacute;sitez pas &agrave; explorer diff&eacute;rentes approches, comme l''interpr&eacute;tation psychanalytique ou spirituelle, pour enrichir votre compr&eacute;hension des symboles oniriques.</p>
+</div>
+</div>
+<h2>Conclusion</h2>
+<p>Comprendre les symboles oniriques est une aventure personnelle et enrichissante. En explorant vos r&ecirc;ves avec curiosit&eacute; et ouverture, vous pouvez d&eacute;couvrir des insights pr&eacute;cieux sur votre vie int&eacute;rieure. Rappelez-vous que l''interpr&eacute;tation des r&ecirc;ves est une comp&eacute;tence qui se d&eacute;veloppe avec le temps, alors soyez patient et pers&eacute;v&eacute;rez dans votre exploration onirique.</p>',2,0,NULL,'2024-08-15 14:48:19','2024-08-15 14:48:19',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723733275792-486615462.png',0);
