@@ -1,6 +1,6 @@
-// import './sentry'
+import './sentry'
 import express from 'express'
-// import * as Sentry from '@sentry/node'
+import * as Sentry from '@sentry/node'
 import { json } from 'body-parser'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
@@ -52,7 +52,11 @@ app.use('/api/tutorials', tutorialsRouter)
 app.use('/api/comments', commentsRouter)
 app.use(authRouter)
 
-// Sentry.setupExpressErrorHandler(app)
+app.get('/sentry', (req, res) => {
+  throw new Error('My first Sentry error!')
+})
+
+Sentry.setupExpressErrorHandler(app)
 
 const start = async () : Promise<void> => {
   try {
