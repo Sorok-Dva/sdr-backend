@@ -1,22 +1,52 @@
 import express, { Request, Response } from 'express'
-import { Op } from 'sequelize'
+import { col, fn, Op } from 'sequelize'
 import { slugify } from '../helpers/helpers'
 import {
   authenticateOptionalToken,
   authenticateToken, isAdmin,
 } from '../middleware/auth'
-import { Upvote, Tutorial, User, Category } from '../models'
+import { Upvote, Comment, Tutorial, User, Category } from '../models'
 
 const tutorialRouter = express.Router()
 
 tutorialRouter.get('/', authenticateOptionalToken, async (req: Request, res: Response) => {
-  const tutorials = await Tutorial.findAll({
-    where: {
-      // validated: true,
-      deletedAt: { [Op.is]: null },
-    },
-  })
-  return res.json(tutorials)
+  try {
+    const tutorials = await Tutorial.findAll({
+      where: {
+        validated: true,
+        deletedAt: { [Op.is]: null },
+      },
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['nickname', 'avatar'],
+        },
+        {
+          model: Comment,
+          as: 'comments',
+          attributes: [],
+        },
+        {
+          model: Upvote,
+          as: 'upvotes',
+          attributes: [],
+        },
+      ],
+      attributes: {
+        include: [
+          [fn('COUNT', col('comments.id')), 'commentCount'],
+          [fn('COUNT', col('upvotes.id')), 'upvoteCount'],
+        ],
+      },
+      group: ['Tutorial.id', 'user.id'],
+    })
+
+    return res.json(tutorials)
+  } catch (error) {
+    console.error('Failed to fetch tutorials:', error)
+    return res.status(500).json({ error: 'Failed to fetch tutorials' })
+  }
 })
 
 tutorialRouter.get('/top', authenticateToken, async (req: Request, res: Response) => {
