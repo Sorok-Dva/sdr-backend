@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.createTable('tutorialComments', {
+    await queryInterface.createTable('comments', {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -50,6 +50,6 @@ module.exports = {
     });
   },
   down: async (queryInterface) => {
-    await queryInterface.dropTable('tutorialComments');
+    await queryInterface.dropTable('comments');
   }
 };
