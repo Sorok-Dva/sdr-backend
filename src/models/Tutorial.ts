@@ -1,5 +1,4 @@
 import { DataTypes, Model, Optional, Sequelize } from 'sequelize'
-import { User } from 'src/models/User'
 import { sequelize } from '../sequelize'
 
 interface TutorialAttributes {
@@ -45,7 +44,7 @@ class Tutorial extends Model<TutorialAttributes, TutorialCreationAttributes> imp
 
   public readonly updatedAt!: Date
 
-  public readonly deletedAt!: Date | null
+  public deletedAt!: Date | null
 
   static initialize (sequelize: Sequelize) {
     this.init(
@@ -87,6 +86,10 @@ class Tutorial extends Model<TutorialAttributes, TutorialCreationAttributes> imp
         },
         validatedByUserId: {
           type: DataTypes.INTEGER,
+          allowNull: true,
+        },
+        deletedAt: {
+          type: DataTypes.DATE,
           allowNull: true,
         },
       },

@@ -53,4 +53,18 @@ router.patch('/:id', async (req : Request, res : Response) => {
   }
 })
 
+router.delete('/:id', async (req: Request, res: Response) => {
+  try {
+    const tutorial = await Tutorial.findByPk(req.params.id)
+    if (!tutorial) {
+      return res.status(404).json({ error: 'Tutorial not found' })
+    }
+    tutorial.deletedAt = new Date()
+    await tutorial.save()
+    return res.status(204).send()
+  } catch (err) {
+    return res.status(500).json({ error: 'Failed to delete tutorial' })
+  }
+})
+
 export { router as adminTutorialsRouter }

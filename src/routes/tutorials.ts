@@ -35,17 +35,19 @@ tutorialRouter.get('/top', authenticateToken, async (req: Request, res: Response
 })
 
 tutorialRouter.get('/:id', authenticateOptionalToken, async (req: Request, res: Response) => {
+  const { id } = req.params
   const tutorial = await Tutorial.findOne({
     where: {
+      id,
       // validated: true,
       deletedAt: { [Op.is]: null },
     },
   })
 
-  if (tutorial) {
-    tutorial.views += 1
-    await tutorial.save()
-  }
+  if (!tutorial) return res.status(404).send('Tutorial not found.')
+
+  tutorial.views += 1
+  await tutorial.save()
 
   return res.json(tutorial)
 })

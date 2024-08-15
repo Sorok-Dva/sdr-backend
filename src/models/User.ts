@@ -52,7 +52,7 @@ class User extends Model<UserAttributes, UserCreationAttributes>
 
   public readonly updatedAt!: Date
 
-  public readonly deletedAt!: Date | null
+  public deletedAt!: Date | null
 
   public readonly dreams?: UserDream[]
 
@@ -101,6 +101,10 @@ class User extends Model<UserAttributes, UserCreationAttributes>
           type: DataTypes.BOOLEAN,
           allowNull: false,
           defaultValue: false,
+        },
+        deletedAt: {
+          type: DataTypes.DATE,
+          allowNull: true,
         },
       },
       {
