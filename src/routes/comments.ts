@@ -3,7 +3,7 @@ import { Op } from 'sequelize'
 import {
   authenticateToken,
 } from '../middleware/auth'
-import { Comment, CommentUpvote, User } from '../models'
+import { Comment, Upvote, User } from '../models'
 
 const commentRouter = express.Router()
 
@@ -103,7 +103,7 @@ commentRouter.post('/:id/upvote', async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'Comment not found' })
     }
 
-    const existingUpvote = await CommentUpvote.findOne({
+    const existingUpvote = await Upvote.findOne({
       where: { userId, commentId: id },
     })
 
@@ -114,7 +114,7 @@ commentRouter.post('/:id/upvote', async (req: Request, res: Response) => {
       return res.status(200).json(comment)
     }
 
-    await CommentUpvote.create({ userId, commentId: parseInt(id, 10) })
+    await Upvote.create({ userId, commentId: parseInt(id, 10) })
     comment.upvote += 1
     await comment.save()
     res.status(200).json(comment)
