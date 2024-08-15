@@ -5,7 +5,7 @@ import {
   authenticateOptionalToken,
   authenticateToken,
 } from '../middleware/auth'
-import { Tutorial } from '../models'
+import { Comment, Upvote, Tutorial } from '../models'
 
 const tutorialRouter = express.Router()
 
@@ -32,6 +32,38 @@ tutorialRouter.get('/top', authenticateToken, async (req: Request, res: Response
     ...tutorial.dataValues,
     slug: slugify(tutorial.title),
   })))
+})
+
+tutorialRouter.post('/:id/upvote', authenticateToken, async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+    const userId = req.user.id
+
+    const tutorial = await Tutorial.findByPk(id)
+
+    if (!tutorial) {
+      return res.status(404).json({ error: 'Tutorial not found' })
+    }
+
+    const existingUpvote = await Upvote.findOne({
+      where: { userId, tutorialId: id },
+    })
+
+    if (existingUpvote) {
+      tutorial.upvote -= 1
+      await tutorial.save()
+      await existingUpvote.destroy()
+      return res.status(200).json(tutorial)
+    }
+
+    await Upvote.create({ userId, tutorialId: parseInt(id, 10) })
+    tutorial.upvote += 1
+    await tutorial.save()
+    res.status(200).json(tutorial)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ error: 'Failed to upvote tutorial' })
+  }
 })
 
 tutorialRouter.get('/:id', authenticateOptionalToken, async (req: Request, res: Response) => {
