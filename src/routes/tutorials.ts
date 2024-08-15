@@ -5,7 +5,7 @@ import {
   authenticateOptionalToken,
   authenticateToken,
 } from '../middleware/auth'
-import { Comment, Upvote, Tutorial } from '../models'
+import { Upvote, Tutorial, User } from '../models'
 
 const tutorialRouter = express.Router()
 
@@ -73,6 +73,11 @@ tutorialRouter.get('/:id', authenticateOptionalToken, async (req: Request, res: 
       id,
       // validated: true,
       deletedAt: { [Op.is]: null },
+    },
+    include: {
+      model: User,
+      as: 'user',
+      attributes: ['nickname', 'avatar'],
     },
   })
 
