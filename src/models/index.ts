@@ -1,6 +1,7 @@
 import { Upvote } from './Upvote'
 import { User } from './User'
 import { Event } from './Event'
+import { Category } from './Category'
 import { Comment } from './Comment'
 import { sequelize } from '../sequelize'
 import { Report } from './Report'
@@ -61,6 +62,7 @@ export {
   UserDream,
   Report,
   Tutorial,
+  Category,
   Comment,
   Upvote,
   sequelize,

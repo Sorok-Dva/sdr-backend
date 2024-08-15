@@ -3,9 +3,9 @@ import { Op } from 'sequelize'
 import { slugify } from '../helpers/helpers'
 import {
   authenticateOptionalToken,
-  authenticateToken,
+  authenticateToken, isAdmin,
 } from '../middleware/auth'
-import { Upvote, Tutorial, User } from '../models'
+import { Upvote, Tutorial, User, Category } from '../models'
 
 const tutorialRouter = express.Router()
 
@@ -17,6 +17,61 @@ tutorialRouter.get('/', authenticateOptionalToken, async (req: Request, res: Res
     },
   })
   return res.json(tutorials)
+})
+
+tutorialRouter.get('/top', authenticateToken, async (req: Request, res: Response) => {
+  const tutorials = await Tutorial.findAll({
+    where: {
+      deletedAt: { [Op.is]: null },
+    },
+    attributes: ['id', 'title', 'views'],
+    order: [['views', 'DESC']],
+    limit: 2,
+  })
+  return res.json(tutorials.map(tutorial => ({
+    ...tutorial.dataValues,
+    slug: slugify(tutorial.title),
+  })))
+})
+
+tutorialRouter.get('/categories', authenticateToken, async (req: Request, res: Response) => {
+  try {
+    const categories = await Category.findAll({
+      attributes: ['id', 'title', 'description'],
+    })
+    return res.json(categories)
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json({ error: 'Failed to fetch categories' })
+  }
+})
+
+tutorialRouter.delete('/categories/:id', authenticateToken, isAdmin, async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+    const deleted = await Category.destroy({
+      where: { id },
+    })
+    if (deleted) {
+      res.status(204).send()
+    } else {
+      res.status(404).json({ error: 'Category not found' })
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete category' })
+  }
+})
+
+tutorialRouter.post('/categories', authenticateToken, isAdmin, async (req: Request, res: Response) => {
+  try {
+    const { title, description } = req.body
+
+    const newCategory = await Category.create({ title, description })
+
+    res.status(201).json(newCategory)
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to add category' })
+  }
 })
 
 tutorialRouter.get('/top', authenticateToken, async (req: Request, res: Response) => {
