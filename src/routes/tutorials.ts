@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express'
-import { col, fn, literal, Op } from 'sequelize'
+import { col, fn, literal, Op, Sequelize } from 'sequelize'
 import { slugify } from '../helpers/helpers'
 import {
   authenticateOptionalToken,
@@ -97,15 +97,32 @@ tutorialRouter.get('/latest', async (req, res) => {
       },
       order: [['createdAt', 'DESC']],
       limit: 3,
-      include: {
-        model: User,
-        as: 'user',
-        attributes: ['nickname', 'avatar'],
+      attributes: {
+        include: [
+          [
+            Sequelize.literal(`(
+              SELECT COUNT(*)
+              FROM comments AS comment
+              WHERE
+                comment.tutorialId = Tutorial.id
+                AND comment.deletedAt IS NULL
+            )`),
+            'commentCount',
+          ],
+        ],
       },
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['nickname', 'avatar'],
+        },
+      ],
     })
 
     res.json(latestTutorials)
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to fetch latest tutorials' })
   }
 })
