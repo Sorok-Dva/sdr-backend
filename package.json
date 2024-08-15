@@ -17,7 +17,7 @@
     "!test:security": "mocha -r ts-node/register 'test/security*/**/*.test.ts'",
     "test:integration": "mocha -r ts-node/register 'test/integration*/**/*.test.ts'",
     "vulnerabilities": "snyk monitor",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org screenme --project backend-app . && sentry-cli sourcemaps upload --org screenme --project backend-app ."
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org sentier-des-reves --project sdr-backend . && sentry-cli sourcemaps upload --org sentier-des-reves --project sdr-backend ."
   },
   "lint-staged": {
     "src/**/*.ts": [

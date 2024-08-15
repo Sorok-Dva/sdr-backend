@@ -52,10 +52,6 @@ app.use('/api/tutorials', tutorialsRouter)
 app.use('/api/comments', commentsRouter)
 app.use(authRouter)
 
-app.get('/sentry', (req, res) => {
-  throw new Error('My first Sentry error!')
-})
-
 Sentry.setupExpressErrorHandler(app)
 
 const start = async () : Promise<void> => {
