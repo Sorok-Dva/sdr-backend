@@ -1,3 +1,4 @@
+import { Upvote } from './Upvote'
 import { User } from './User'
 import { Event } from './Event'
 import { Comment } from './Comment'
@@ -6,7 +7,6 @@ import { Report } from './Report'
 import { Role } from './Role'
 import { Tutorial } from './Tutorial'
 import { UserDream } from './UserDream'
-import { CommentUpvote } from './CommentUpvote'
 
 // Associations
 
@@ -38,13 +38,17 @@ Comment.belongsTo(User, { foreignKey: 'userId', as: 'user' })
 Tutorial.hasMany(Comment, { foreignKey: 'tutorialId', as: 'comments' })
 Comment.belongsTo(Tutorial, { foreignKey: 'tutorialId', as: 'tutorial' })
 
-// Comment and CommentUpvote
-Comment.hasMany(CommentUpvote, { foreignKey: 'commentId', as: 'upvotes' })
-CommentUpvote.belongsTo(Comment, { foreignKey: 'commentId', as: 'comment' })
+// Tutorial and Upvote
+Tutorial.hasMany(Upvote, { foreignKey: 'tutorialId', as: 'upvotes' })
+Upvote.belongsTo(Tutorial, { foreignKey: 'tutorialId', as: 'tutorial' })
 
-// User and CommentUpvote
-User.hasMany(CommentUpvote, { foreignKey: 'userId', as: 'commentUpvotes' })
-CommentUpvote.belongsTo(User, { foreignKey: 'userId', as: 'user' })
+// Comment and Upvote
+Comment.hasMany(Upvote, { foreignKey: 'commentId', as: 'upvotes' })
+Upvote.belongsTo(Comment, { foreignKey: 'commentId', as: 'comment' })
+
+// User and Upvote
+User.hasMany(Upvote, { foreignKey: 'userId', as: 'commentUpvotes' })
+Upvote.belongsTo(User, { foreignKey: 'userId', as: 'user' })
 
 export {
   Role,
@@ -54,6 +58,6 @@ export {
   Report,
   Tutorial,
   Comment,
-  CommentUpvote,
+  Upvote,
   sequelize,
 }

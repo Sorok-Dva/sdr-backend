@@ -4,19 +4,25 @@ import { sequelize } from '../sequelize'
 interface CommentUpvoteAttributes {
   id: number
   userId: number
-  commentId: number
+  commentId?: number
+  tutorialId?: number
   createdAt?: Date
   updatedAt?: Date
 }
 
-type CommentUpvoteCreationAttributes = Optional<CommentUpvoteAttributes, 'id'>
+type CommentUpvoteCreationAttributes = Optional<
+  CommentUpvoteAttributes,
+  'id' | 'commentId' | 'tutorialId'
+>
 
-class CommentUpvote extends Model<CommentUpvoteAttributes, CommentUpvoteCreationAttributes> implements CommentUpvoteAttributes {
+class Upvote extends Model<CommentUpvoteAttributes, CommentUpvoteCreationAttributes> implements CommentUpvoteAttributes {
   public id!: number
 
   public userId!: number
 
   public commentId!: number
+
+  public tutorialId!: number
 
   public readonly createdAt!: Date
 
@@ -38,9 +44,17 @@ class CommentUpvote extends Model<CommentUpvoteAttributes, CommentUpvoteCreation
             key: 'id',
           },
         },
+        tutorialId: {
+          type: DataTypes.INTEGER,
+          allowNull: true,
+          references: {
+            model: 'tutorials',
+            key: 'id',
+          },
+        },
         commentId: {
           type: DataTypes.INTEGER,
-          allowNull: false,
+          allowNull: true,
           references: {
             model: 'comments',
             key: 'id',
@@ -49,13 +63,20 @@ class CommentUpvote extends Model<CommentUpvoteAttributes, CommentUpvoteCreation
       },
       {
         sequelize,
-        tableName: 'commentUpvotes',
-        modelName: 'CommentUpvote',
+        tableName: 'upvotes',
+        modelName: 'Upvote',
+        validate: {
+          eitherCommentOrTutorial () {
+            if (!this.commentId && !this.tutorialId) {
+              throw new Error('Either commentId or tutorialId must be provided.')
+            }
+          },
+        },
       },
     )
   }
 }
 
-CommentUpvote.initialize(sequelize)
+Upvote.initialize(sequelize)
 
-export { CommentUpvote }
+export { Upvote }

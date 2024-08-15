@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.createTable('commentUpvotes', {
+    await queryInterface.createTable('upvotes', {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -18,9 +18,17 @@ module.exports = {
       },
       commentId: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'comments',
+          key: 'id',
+        },
+      },
+      tutorialId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'tutorials',
           key: 'id',
         },
       },
@@ -37,6 +45,6 @@ module.exports = {
     });
   },
   down: async (queryInterface) => {
-    await queryInterface.dropTable('commentUpvotes');
+    await queryInterface.dropTable('upvotes');
   }
 };
