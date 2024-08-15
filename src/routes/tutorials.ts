@@ -88,6 +88,28 @@ tutorialRouter.get('/popular', authenticateOptionalToken, async (req, res) => {
   }
 })
 
+tutorialRouter.get('/latest', async (req, res) => {
+  try {
+    const latestTutorials = await Tutorial.findAll({
+      where: {
+        validated: true,
+        deletedAt: { [Op.is]: null },
+      },
+      order: [['createdAt', 'DESC']],
+      limit: 3,
+      include: {
+        model: User,
+        as: 'user',
+        attributes: ['nickname', 'avatar'],
+      },
+    })
+
+    res.json(latestTutorials)
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch latest tutorials' })
+  }
+})
+
 tutorialRouter.get('/categories', authenticateToken, async (req: Request, res: Response) => {
   try {
     const categories = await Category.findAll({
