@@ -34,6 +34,10 @@ User.hasMany(Event, { foreignKey: 'userId', as: 'events' })
 User.hasMany(Comment, { foreignKey: 'userId', as: 'comments' })
 Comment.belongsTo(User, { foreignKey: 'userId', as: 'user' })
 
+// User and Tutorial
+User.hasMany(Tutorial, { foreignKey: 'userId', as: 'tutorials' })
+Tutorial.belongsTo(User, { foreignKey: 'userId', as: 'user' })
+
 // Tutorial and Comment
 Tutorial.hasMany(Comment, { foreignKey: 'tutorialId', as: 'comments' })
 Comment.belongsTo(Tutorial, { foreignKey: 'tutorialId', as: 'tutorial' })
