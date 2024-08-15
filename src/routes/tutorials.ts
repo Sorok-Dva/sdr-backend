@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express'
-import { col, fn, Op } from 'sequelize'
+import { col, fn, literal, Op } from 'sequelize'
 import { slugify } from '../helpers/helpers'
 import {
   authenticateOptionalToken,
@@ -62,6 +62,30 @@ tutorialRouter.get('/top', authenticateToken, async (req: Request, res: Response
     ...tutorial.dataValues,
     slug: slugify(tutorial.title),
   })))
+})
+
+tutorialRouter.get('/popular', authenticateOptionalToken, async (req, res) => {
+  try {
+    const popularTutorials = await Tutorial.findAll({
+      where: {
+        validated: true,
+        deletedAt: { [Op.is]: null },
+      },
+      include: {
+        model: User,
+        as: 'user',
+        attributes: ['nickname', 'avatar'],
+      },
+      order: [
+        [literal('views / (upvote + 1)'), 'DESC'], // Calculate ratio views/upvotes
+      ],
+      limit: 4,
+    })
+
+    res.json(popularTutorials)
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch popular tutorials' })
+  }
 })
 
 tutorialRouter.get('/categories', authenticateToken, async (req: Request, res: Response) => {
