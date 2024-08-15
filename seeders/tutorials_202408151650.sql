@@ -650,7 +650,7 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 <div class="highlight">
 <p class="important">Rappelez-vous : La ma&icirc;trise du r&ecirc;ve lucide est un processus continu. M&ecirc;me apr&egrave;s avoir suivi ce programme, continuez &agrave; pratiquer et &agrave; affiner vos techniques pour devenir un r&ecirc;veur lucide exp&eacute;riment&eacute;.</p>
 </div>
-</div>',2,0,NULL,'2024-08-15 14:41:50','2024-08-15 14:41:51',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723732867842-618075748.png',0),
+</div>',2,1,1,'2024-08-15 14:41:50','2024-08-15 14:41:51',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723732867842-618075748.png',0),
 	 (1,1,'Comprendre les Symboles Oniriques','<blockquote>
 <p>Les symboles oniriques sont des &eacute;l&eacute;ments de vos r&ecirc;ves qui repr&eacute;sentent des id&eacute;es, des &eacute;motions ou des aspects de votre vie. Apprendre &agrave; interpr&eacute;ter ces symboles peut vous aider &agrave; mieux comprendre votre subconscient, &agrave; r&eacute;soudre des probl&egrave;mes personnels, et &agrave; enrichir votre exp&eacute;rience de r&ecirc;ve lucide.</p>
 </blockquote>
@@ -745,4 +745,4 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 </div>
 </div>
 <h2>Conclusion</h2>
-<p>Comprendre les symboles oniriques est une aventure personnelle et enrichissante. En explorant vos r&ecirc;ves avec curiosit&eacute; et ouverture, vous pouvez d&eacute;couvrir des insights pr&eacute;cieux sur votre vie int&eacute;rieure. Rappelez-vous que l''interpr&eacute;tation des r&ecirc;ves est une comp&eacute;tence qui se d&eacute;veloppe avec le temps, alors soyez patient et pers&eacute;v&eacute;rez dans votre exploration onirique.</p>',2,0,NULL,'2024-08-15 14:48:19','2024-08-15 14:48:19',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723733275792-486615462.png',0);
+<p>Comprendre les symboles oniriques est une aventure personnelle et enrichissante. En explorant vos r&ecirc;ves avec curiosit&eacute; et ouverture, vous pouvez d&eacute;couvrir des insights pr&eacute;cieux sur votre vie int&eacute;rieure. Rappelez-vous que l''interpr&eacute;tation des r&ecirc;ves est une comp&eacute;tence qui se d&eacute;veloppe avec le temps, alors soyez patient et pers&eacute;v&eacute;rez dans votre exploration onirique.</p>',2,1,1,'2024-08-15 14:48:19','2024-08-15 14:48:19',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723733275792-486615462.png',0);
