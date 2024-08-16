@@ -1,7 +1,6 @@
 import './sentry'
 import express from 'express'
 import * as Sentry from '@sentry/node'
-import { json } from 'body-parser'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import cors from 'cors'
@@ -13,10 +12,12 @@ import dreamsRouter from './routes/dreams'
 import tutorialsRouter from './routes/tutorials'
 import commentsRouter from './routes/comments'
 import adminRouter from './routes/admin'
+import { logger, Icon } from './lib'
 
 dotenv.config()
 
 const app = express()
+const log = logger('server')
 
 app.use(helmet({
   crossOriginResourcePolicy: false,
@@ -36,7 +37,11 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.use(json())
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(express.json({ type: ['json', 'application/*+json'] }))
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -57,15 +62,20 @@ Sentry.setupExpressErrorHandler(app)
 const start = async () : Promise<void> => {
   try {
     await sequelize.authenticate()
-    console.log('Connected to MySQL and synced models')
+    log.info('Connected to MySQL and synced models')
     await sequelize.sync({ force: true })
-    console.log('Database synchronized.')
+    log.info('Database synchronized.')
+
+    process.on('uncaughtException', e => { log.error(e); process.exit(1) })
+    process.on('unhandledRejection', e => { log.error(e); process.exit(1) })
 
     app.listen(process.env.PORT || 3000, () => {
-      console.log(`Listening on port ${process.env.PORT || 3000}`)
+      const env = process.env.NODE_ENV
+      const icon = env === 'PRODUCTION' ? Icon.Production : Icon.Development
+      log.info(`${icon}  Server is running on port  ${process.env.PORT || 3000}`)
     })
   } catch (err) {
-    console.error('Unable to connect to the database:', err)
+    log.error('Unable to connect to the database:', err)
   }
 }
 
