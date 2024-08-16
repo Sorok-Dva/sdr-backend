@@ -1,3 +1,24 @@
+<div align="center">
+    <img src="https://raw.githubusercontent.com/Sorok-Dva/sdr-frontend/main/public/img/logo.png" alt="sdr-backend Logo">
+  <h1>Le Sentier des Rêves</h1>
+  <blockquote>Réveillez le rêveur en vous.</blockquote>
+  <img src="https://hits.dwyl.com/Sorok-Dva/sdr-backend.svg?style=flat-square" alt="Views"><br />
+  <img src="https://img.shields.io/github/downloads/Sorok-Dva/sdr-backend/total.svg?style=for-the-badge" alt="Total downloads">
+  <!--<a href="https://shields.io/community#sponsors" alt="Sponsors">
+    <img src="https://img.shields.io/opencollective/sponsors/Sorok-Dva.svg?style=for-the-badge" />
+  </a>-->
+  <a href="https://github.com/Sorok-Dva/sdr-backend/pulse" alt="Activity">
+    <img src="https://img.shields.io/github/commit-activity/m/Sorok-Dva/sdr-backend.svg?style=for-the-badge" />
+  </a>
+  <br />
+  <a href="https://github.com/sponsors/Sorok-Dva">
+    <img src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA" alt="Sponsor Me">
+  </a>
+  <a href="https://patreon.com/sorokdva">
+    <img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white" alt="Support Me on Patreon">
+  </a>
+</div>
+
 # Le Sentier des Rêves - Backend app
 
 This project is the backend of a dream journaling and tutorial platform called "Le Sentier des Rêves".
@@ -176,6 +197,20 @@ The API documentation is available at `http://localhost:3000/api-docs` once the 
 4. Push to the branch: `git push origin feature-name`.
 5. Open a pull request.
 
+### Acknowledgments
+
+- Developed by [Сорок два](https://github.com/Sorok-Dva). All rights reserved.
+
 ### License
 
-This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International** - see the [LICENSE](LICENSE) file for details.
+
+## Contributors
+
+<a href="https://github.com/sorok-dva/sdr-backend/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sorok-dva/sdr-backend" />
+</a>
+
+## Contact
+
+For any inquiries or feedback, please visit our [GitHub Repository](https://github.com/Sorok-Dva/sdr-backend) or contact the developers directly.
