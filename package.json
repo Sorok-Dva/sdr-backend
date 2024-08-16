@@ -8,7 +8,11 @@
   "license": "ISC",
   "scripts": {
     "start": "ts-node src/server.ts",
+    "build": "run-p build:*",
+    "build:all": "tsc -d",
     "dev": "CHOKIDAR_USEPOLLING=true nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "describe": "npm-scripts-info",
+    "release": "standard-version -s",
     "test": "run-s test:**",
     "test:ts": "tsc --noEmit",
     "test:lint": "eslint 'src/**/*.ts' --fix",
@@ -16,8 +20,12 @@
     "!test:db": "mocha -r ts-node/register 'test/db/*.test.ts'",
     "!test:security": "mocha -r ts-node/register 'test/security*/**/*.test.ts'",
     "test:integration": "mocha -r ts-node/register 'test/integration*/**/*.test.ts'",
-    "vulnerabilities": "snyk monitor",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org sentier-des-reves --project sdr-backend . && sentry-cli sourcemaps upload --org sentier-des-reves --project sdr-backend ."
+    "coverage": "run-s coverage:*",
+    "coverage:unit": "nyc --silent npm run test:unit",
+    "coverage:report": "nyc report --reporter=lcov --reporter=text",
+    "coverage:codecov": "codecov",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org sentier-des-reves --project sdr-backend . && sentry-cli sourcemaps upload --org sentier-des-reves --project sdr-backend .",
+    "vulnerabilities": "snyk monitor"
   },
   "lint-staged": {
     "src/**/*.ts": [
