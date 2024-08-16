@@ -4,12 +4,17 @@ import bcrypt from 'bcryptjs'
 import { body, validationResult } from 'express-validator'
 import dotenv from 'dotenv'
 import { Op } from 'sequelize'
+import { generateToken } from '../helpers/helpers'
+import { espClient } from '../connectors'
+import emailHelper from '../helpers/emailHelper'
 import { authenticateToken } from '../middleware/auth'
 import { UserDream, User } from '../models'
+import { logger } from '../lib'
 
 dotenv.config()
 
 const authRouter = express.Router()
+const log = logger('user')
 
 const jwtSecret = process.env.JWT_SECRET || 'default_secret'
 
@@ -47,6 +52,7 @@ authRouter.post(
         roleId: 2,
         password: hashedPassword,
         nickname,
+        resetPasswordToken: generateToken(),
         validated: false,
       })
       const userJwt = jwt.sign({
@@ -57,12 +63,50 @@ authRouter.post(
         isAdmin: user.roleId === 1,
       }, jwtSecret, { expiresIn: '31d' })
 
+      const emailOptions = {
+        to: {
+          email,
+          name: user.nickname,
+        },
+        variables: {
+          validationUrl: `${process.env.WEBSITE_URL}/users/validate/${user.resetPasswordToken}`,
+        },
+      }
+
+      await emailHelper.sendWelcomeEmail(emailOptions, espClient)
+
       res.status(201).send({ token: userJwt })
-    } catch (error: any) {
+    } catch (error: unknown) {
+      log.error(error)
       res.status(500).send({ error })
     }
   },
 )
+
+authRouter.get('/api/users/validate/:token', async (req: Request, res: Response) => {
+  try {
+    const { token } = req.params
+
+    const userToValidate = await User.findOne({
+      where: {
+        resetPasswordToken: token,
+      },
+    })
+
+    if (!userToValidate) {
+      return res.status(400).send({ error: 'Invalid token' })
+    }
+
+    userToValidate.resetPasswordToken = null
+    userToValidate.validated = true
+    await userToValidate.save()
+
+    res.status(201).send({ message: 'User successfully validated' })
+  } catch (error: unknown) {
+    log.error(error)
+    res.status(500).send({ error })
+  }
+})
 
 authRouter.post(
   '/api/users/login',
@@ -104,7 +148,8 @@ authRouter.post(
       }, jwtSecret, { expiresIn: '31d' })
 
       res.status(200).send({ token: userJwt })
-    } catch (error: any) {
+    } catch (error: unknown) {
+      log.error(error)
       res.status(500).send({ error })
     }
   },
@@ -124,6 +169,77 @@ authRouter.get('/api/users/me', authenticateToken, async (req: Request, res: Res
     isAdmin: user.roleId === 1,
     validated: user.validated,
   })
+})
+
+authRouter.post(
+  '/forgot-password',
+  [
+    body('email').isEmail().withMessage('L\'adresse email doit être valide.'),
+  ],
+  async (req: Request, res: Response) => {
+    const { email } = req.body
+
+    try {
+      const user = await User.findOne({ where: { email } })
+
+      if (!user) {
+        return res.status(400).json({ error: 'Invalid parameter.' })
+      }
+
+      const token = generateToken()
+      const resetLink = `${process.env.WEBSITE_URL}/reset-password/${token}`
+
+      user.resetPasswordToken = token
+      user.resetPasswordExpires = new Date(Date.now() + 3600000) // 1 hour from now
+      await user.save()
+
+      const emailOptions = {
+        to: {
+          email,
+          name: user.nickname,
+        },
+        variables: {
+          validationUrl: resetLink,
+        },
+      }
+
+      await emailHelper.sendResetPasswordEmail(emailOptions, espClient)
+
+      return res.status(200).json({ message: 'Password reset link sent to your email' })
+    } catch (error) {
+      log.error(error)
+      return res.status(500).json({ error: 'Error sending password reset email' })
+    }
+  },
+)
+
+authRouter.post('/reset-password/:token', async (req: Request, res: Response) => {
+  const { token } = req.params
+  const { newPassword } = req.body
+
+  try {
+    const user = await User.findOne({
+      where: {
+        resetPasswordToken: token,
+        resetPasswordExpires: { [Op.gt]: Date.now() },
+      },
+    })
+
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid or expired token' })
+    }
+
+    user.password = await bcrypt.hash(newPassword, 10)
+    user.resetPasswordToken = null
+    user.resetPasswordExpires = null
+
+    await user.save()
+
+    res.status(200).json({ message: 'Password has been reset successfully' })
+  } catch (error) {
+    log.error(error)
+    res.status(500).json({ error: 'Error resetting password' })
+  }
 })
 
 authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Request, res: Response) => {
@@ -167,7 +283,7 @@ authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Req
       totalViews,
     })
   } catch (error) {
-    console.error(error)
+    log.error(error)
     res.sendStatus(500)
   }
 })
