@@ -98,10 +98,19 @@ authRouter.get('/api/users/validate/:token', async (req: Request, res: Response)
     }
 
     userToValidate.resetPasswordToken = null
+    userToValidate.resetPasswordExpires = null
     userToValidate.validated = true
     await userToValidate.save()
 
-    res.status(201).send({ message: 'User successfully validated' })
+    const userJwt = jwt.sign({
+      id: userToValidate.id,
+      email: userToValidate.email,
+      nickname: userToValidate.nickname,
+      roleId: userToValidate.roleId,
+      isAdmin: userToValidate.roleId === 1,
+    }, jwtSecret, { expiresIn: '31d' })
+
+    res.status(201).send({ token: userJwt, message: 'User successfully validated' })
   } catch (error: unknown) {
     log.error(error)
     res.status(500).send({ error })
