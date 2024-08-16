@@ -213,9 +213,9 @@ authRouter.post(
   },
 )
 
-authRouter.post('/reset-password/:token', async (req: Request, res: Response) => {
+authRouter.post('/api/auth/reset-password/:token', async (req: Request, res: Response) => {
   const { token } = req.params
-  const { newPassword } = req.body
+  const { password } = req.body
 
   try {
     const user = await User.findOne({
@@ -229,7 +229,11 @@ authRouter.post('/reset-password/:token', async (req: Request, res: Response) =>
       return res.status(400).json({ error: 'Invalid or expired token' })
     }
 
-    user.password = await bcrypt.hash(newPassword, 10)
+    if (!password) {
+      return res.status(400).json({ error: 'No new password waa given' })
+    }
+
+    user.password = await bcrypt.hash(password, 10)
     user.resetPasswordToken = null
     user.resetPasswordExpires = null
 
