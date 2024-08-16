@@ -62,7 +62,7 @@ dreamsRouter.post(
   '/',
   authenticateToken,
   [
-    body('title').isLength({ min: 4, max: 20 }).withMessage('Title must be at least 5 characters long'),
+    body('title').isLength({ min: 3, max: 50 }).withMessage('Title must be at least 5 characters long'),
     body('content').isLength({ min: 5 }).withMessage('Description must be at least 5 characters long'),
   ],
   async (req: Request, res: Response) => {
