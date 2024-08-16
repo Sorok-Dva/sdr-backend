@@ -172,7 +172,7 @@ authRouter.get('/api/users/me', authenticateToken, async (req: Request, res: Res
 })
 
 authRouter.post(
-  '/forgot-password',
+  '/api/auth/forgot-password',
   [
     body('email').isEmail().withMessage('L\'adresse email doit être valide.'),
   ],
