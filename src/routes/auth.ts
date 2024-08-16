@@ -55,13 +55,6 @@ authRouter.post(
         resetPasswordToken: generateToken(),
         validated: false,
       })
-      const userJwt = jwt.sign({
-        id: user.id,
-        email: user.email,
-        nickname: user.nickname,
-        roleId: user.roleId,
-        isAdmin: user.roleId === 1,
-      }, jwtSecret, { expiresIn: '31d' })
 
       const emailOptions = {
         to: {
@@ -75,7 +68,7 @@ authRouter.post(
 
       await emailHelper.sendWelcomeEmail(emailOptions, espClient)
 
-      res.status(201).send({ token: userJwt })
+      res.status(201).send({ message: 'User successfully validated' })
     } catch (error: unknown) {
       log.error(error)
       res.status(500).send({ error })
@@ -143,6 +136,11 @@ authRouter.post(
       if (!user) {
         return res.status(400).send({ error: 'Invalid credentials' })
       }
+
+      if (!user.validated) {
+        return res.status(400).send({ error: 'Compte non validé. Veuillez vérifier votre email et valider votre compte en utilisant le lien envoyé lors de votre inscription. Si vous ne trouvez pas l\'email, pensez à vérifier vos spams ou recherchez un message de "Lisa du Sentier des Rêves".' })
+      }
+
       const passwordsMatch = await bcrypt.compare(password, user.password)
       if (!passwordsMatch) {
         return res.status(400).send({ error: 'Invalid credentials' })
