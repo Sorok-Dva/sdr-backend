@@ -11,6 +11,8 @@ interface UserAttributes {
   roleId: number
   points: number
   validated: boolean
+  resetPasswordToken?: string | null
+  resetPasswordExpires?: Date | null
   createdAt?: Date
   updatedAt?: Date
   deletedAt?: Date | null
@@ -47,6 +49,10 @@ class User extends Model<UserAttributes, UserCreationAttributes>
   public points!: number
 
   public validated!: boolean
+
+  public resetPasswordToken!: string | null
+
+  public resetPasswordExpires!: Date | null
 
   public readonly createdAt!: Date
 
@@ -96,6 +102,14 @@ class User extends Model<UserAttributes, UserCreationAttributes>
           type: DataTypes.INTEGER,
           allowNull: false,
           defaultValue: 0,
+        },
+        resetPasswordToken: {
+          type: DataTypes.STRING,
+          allowNull: true,
+        },
+        resetPasswordExpires: {
+          type: DataTypes.DATE,
+          allowNull: true,
         },
         validated: {
           type: DataTypes.BOOLEAN,
