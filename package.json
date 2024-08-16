@@ -7,10 +7,10 @@
   "author": "Sorok-dva",
   "license": "ISC",
   "scripts": {
-    "start": "ts-node src/server.ts",
+    "start": "DEBUG=sdr-api:* ts-node src/server.ts",
     "build": "run-p build:*",
     "build:all": "tsc -d",
-    "dev": "CHOKIDAR_USEPOLLING=true nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "dev": "DEBUG=sdr-api:* CHOKIDAR_USEPOLLING=true nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "describe": "npm-scripts-info",
     "release": "standard-version -s",
     "test": "run-s test:**",
