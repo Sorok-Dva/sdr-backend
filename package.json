@@ -1,6 +1,6 @@
 {
   "name": "sdr-backend",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Sentier des Reves backend app",
   "main": "index.js",
   "keywords": [],
