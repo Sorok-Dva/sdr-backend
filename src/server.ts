@@ -57,7 +57,7 @@ app.use('/api/tutorials', tutorialsRouter)
 app.use('/api/comments', commentsRouter)
 app.use(authRouter)
 
-Sentry.setupExpressErrorHandler(app)
+if (process.env.SENTRY_DSN) Sentry.setupExpressErrorHandler(app)
 
 const start = async () : Promise<void> => {
   try {
