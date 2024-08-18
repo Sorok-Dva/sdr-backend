@@ -50,7 +50,9 @@ as well as interact with tutorials and community content.
 - **Reporting**: Users can report inappropriate content.
 - **Authentication**: Secure token-based authentication (JWT).
 
-## Technologies
+## Technologies Used
+
+![langs](https://skillicons.dev/icons?i=typescript,nodejs,express,ubuntu,linux,docker,sentry&perline=)
 
 - **Node.js**: TypeScript runtime environment.
 - **Express**: Web framework for Node.js.
@@ -220,6 +222,7 @@ The API documentation is available at `http://localhost:3000/api-docs` once the 
 ### Acknowledgments
 
 - Developed by [Сорок два](https://github.com/Sorok-Dva). All rights reserved.
+- Developed with love through ![langs](https://skillicons.dev/icons?i=webstorm&perline=)
 
 ### License
 
