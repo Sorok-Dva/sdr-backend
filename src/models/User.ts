@@ -5,6 +5,7 @@ import { sequelize } from '../sequelize'
 interface UserAttributes {
   id?: number
   email: string
+  oldEmail: string
   nickname: string
   avatar?: string
   password: string
@@ -13,6 +14,7 @@ interface UserAttributes {
   validated: boolean
   resetPasswordToken?: string | null
   resetPasswordExpires?: Date | null
+  lastNicknameChange?: Date | null
   createdAt?: Date
   updatedAt?: Date
   deletedAt?: Date | null
@@ -24,7 +26,10 @@ interface UserAttributes {
  * @interface UserCreationAttributes
  * @extends {Optional<UserAttributes, 'id'>}
  */
-type UserCreationAttributes = Optional<UserAttributes, 'id' | 'points'>
+type UserCreationAttributes = Optional<
+  UserAttributes,
+  'id' | 'oldEmail' | 'points' | 'lastNicknameChange'
+>
 
 /**
  * Represents a User.
@@ -37,6 +42,8 @@ class User extends Model<UserAttributes, UserCreationAttributes>
   public id!: number
 
   public email!: string
+
+  public oldEmail!: string
 
   public nickname!: string
 
@@ -53,6 +60,8 @@ class User extends Model<UserAttributes, UserCreationAttributes>
   public resetPasswordToken!: string | null
 
   public resetPasswordExpires!: Date | null
+
+  public lastNicknameChange!: Date | null
 
   public readonly createdAt!: Date
 
@@ -73,6 +82,11 @@ class User extends Model<UserAttributes, UserCreationAttributes>
         email: {
           type: DataTypes.STRING,
           allowNull: false,
+          unique: true,
+        },
+        oldEmail: {
+          type: DataTypes.STRING,
+          allowNull: true,
           unique: true,
         },
         nickname: {
@@ -108,6 +122,10 @@ class User extends Model<UserAttributes, UserCreationAttributes>
           allowNull: true,
         },
         resetPasswordExpires: {
+          type: DataTypes.DATE,
+          allowNull: true,
+        },
+        lastNicknameChange: {
           type: DataTypes.DATE,
           allowNull: true,
         },
