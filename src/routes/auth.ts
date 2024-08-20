@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs'
 import { body, validationResult } from 'express-validator'
 import dotenv from 'dotenv'
 import { Op } from 'sequelize'
+import dayjs from 'dayjs'
 import { generateToken } from '../helpers/helpers'
 import { espClient } from '../connectors'
 import emailHelper from '../helpers/emailHelper'
@@ -163,17 +164,19 @@ authRouter.post(
 )
 
 authRouter.get('/api/users/me', authenticateToken, async (req: Request, res: Response) => {
-  const user = await User.findByPk(req.user!.id)
+  const user = await User.findByPk(req.user.id)
   if (!user) {
     return res.sendStatus(404)
   }
   res.json({
     id: user.id,
     email: user.email,
+    oldEmail: user.oldEmail,
     nickname: user.nickname,
     avatar: user.avatar,
     roleId: user.roleId,
     isAdmin: user.roleId === 1,
+    lastNicknameChange: user.lastNicknameChange,
     validated: user.validated,
   })
 })
@@ -252,6 +255,109 @@ authRouter.post('/api/auth/reset-password/:token', async (req: Request, res: Res
     res.status(500).json({ error: 'Error resetting password' })
   }
 })
+
+authRouter.post(
+  '/api/users/update-nickname',
+  [
+    body('nickname').notEmpty().withMessage('Username cannot be empty'),
+  ],
+  authenticateToken,
+  async (req: Request, res: Response) => {
+    const userId = req.user.id
+    const { nickname } = req.body
+
+    try {
+      const existingUser = await User.findOne({ where: { nickname } })
+      if (existingUser) {
+        return res.status(400).json({ error: 'Pseudo indisponible' })
+      }
+
+      const user = await User.findByPk(userId)
+      if (!user) {
+        return res.status(404).json({ error: 'Utilisateur non trouvé' })
+      }
+
+      const sixMonthsAgo = dayjs().subtract(6, 'months')
+      if (user.lastNicknameChange
+        && dayjs(user.lastNicknameChange).isAfter(sixMonthsAgo)) {
+        return res.status(400).json({
+          error: 'Vous ne pouvez changer de pseudo qu\'une fois tous les 6 mois',
+        })
+      }
+
+      user.nickname = nickname
+      user.lastNicknameChange = new Date()
+
+      await user.save()
+
+      log.info(`${req.user.nickname} has changed his nickname to ${nickname}`)
+      return res.status(200).json({ message: 'Pseudo mis à jour avec succès' })
+    } catch (error) {
+      log.error('Erreur lors de la mise à jour du pseudo:', error)
+      return res.status(500).json({ error: 'Erreur lors de la mise à jour du pseudo' })
+    }
+  },
+)
+
+authRouter.post(
+  '/api/users/change-email',
+  [
+    body('email').notEmpty().isEmail().isLength({ min: 5 }).withMessage('Email must be valid'),
+  ],
+  authenticateToken,
+  async (req: Request, res: Response) => {
+    const userId = req.user.id
+    const { email } = req.body
+
+    try {
+      const existingUser = await User.findOne({ where: { email } })
+      if (existingUser) {
+        return res.status(400).json({ error: 'Email indisponible' })
+      }
+
+      const user = await User.findByPk(userId)
+      if (!user) {
+        return res.status(404).json({ error: 'Utilisateur non trouvé' })
+      }
+
+      if (user.email === email) {
+        return res.status(400).json({ error: 'Vous ne pouvez pas changer votre email par votre adresse e-mail déjà lié à votre compte.' })
+      }
+
+      if (!user.validated) {
+        return res.status(400).json({ error: 'Votre adresse e-mail est déjà en cours de changement. Veuille valider le lien reçu par email.' })
+      }
+
+      const newToken = generateToken()
+      log.debug('new token', newToken)
+      log.debug('old token', user.resetPasswordToken)
+      user.oldEmail = user.email
+      user.email = email
+      user.validated = false
+      user.resetPasswordToken = newToken
+
+      await user.save()
+
+      log.info(`${req.user.nickname} has changed his email from ${user.oldEmail} to ${user.email}`)
+      const emailOptions = {
+        to: {
+          email: user.oldEmail,
+          name: user.nickname,
+        },
+        variables: {
+          validationUrl: `${process.env.WEBSITE_URL}/users/validate/${newToken}`,
+        },
+      }
+
+      await emailHelper.sendEmailChange(emailOptions, espClient)
+
+      return res.status(200).json({ message: 'Email mise à jour avec succès' })
+    } catch (error) {
+      log.error('Erreur lors de la mise à jour de l\'email:', error)
+      return res.status(500).json({ error: 'Erreur lors de la mise à jour de votre email' })
+    }
+  },
+)
 
 authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Request, res: Response) => {
   const { nickname } = req.params
