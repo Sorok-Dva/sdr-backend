@@ -17,7 +17,7 @@ User.belongsTo(Role, { foreignKey: 'roleId', as: 'role' })
 Role.hasMany(User, { foreignKey: 'roleId', as: 'users' })
 
 // User and UserDream
-User.hasMany(UserDream, { foreignKey: 'userId', as: 'userDreams' })
+User.hasMany(UserDream, { foreignKey: 'userId', as: 'dreams' })
 UserDream.belongsTo(User, { foreignKey: 'userId', as: 'user' })
 
 // User and Report

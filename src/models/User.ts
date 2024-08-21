@@ -1,5 +1,5 @@
 import { DataTypes, Model, Optional, Sequelize } from 'sequelize'
-import { UserDream } from 'src/models/UserDream'
+import { UserDream } from './UserDream'
 import { sequelize } from '../sequelize'
 
 interface UserAttributes {
