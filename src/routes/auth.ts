@@ -376,7 +376,7 @@ authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Req
       where: { nickname },
       include: [{
         model: UserDream,
-        as: 'userDreams',
+        as: 'dreams',
         attributes: ['id', 'privacy', 'views', 'deletedAt'],
         where: {
           deletedAt: {
