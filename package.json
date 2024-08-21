@@ -60,7 +60,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
-    "@faker-js/faker": "7.6.0",
+    "@faker-js/faker": "8.4.1",
     "@istanbuljs/nyc-config-typescript": "1.0.2",
     "@types/archiver": "^6.0.2",
     "@types/bcryptjs": "^2.4.6",
