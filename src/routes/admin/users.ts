@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express'
 import { Sequelize } from 'sequelize'
-import { Role, UserDream, User } from '../../models'
+import { Role, UserDream, User, NicknameChange } from '../../models'
 import { authenticateToken, isAdmin } from '../../middleware/auth'
 
 const router = express.Router()
@@ -84,8 +84,13 @@ router.get('/:id', async (req: Request, res: Response) => {
           as: 'role',
           attributes: ['id', 'name'],
         },
+        {
+          model: NicknameChange,
+          as: 'nicknameChanges',
+          attributes: ['oldNickname', 'newNickname', 'createdAt'],
+        },
       ],
-      group: ['User.id', 'role.id'],
+      group: ['User.id', 'role.id', 'nicknameChanges.id'],
     })
 
     if (!user) {
