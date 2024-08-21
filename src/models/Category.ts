@@ -58,7 +58,7 @@ class Category extends Model<CategoryAttributes, CategoryCreationAttributes> imp
       },
       {
         sequelize,
-        tableName: 'Categories',
+        tableName: 'categories',
         modelName: 'Category',
       },
     )
