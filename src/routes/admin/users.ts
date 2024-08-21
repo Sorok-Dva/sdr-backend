@@ -17,7 +17,7 @@ router.get('/', async (req: Request, res: Response) => {
             Sequelize.fn(
               'COUNT',
               Sequelize.literal(
-                'CASE WHEN userDreams.deletedAt IS NULL THEN userDreams.id ELSE NULL END',
+                'CASE WHEN dreams.deletedAt IS NULL THEN dreams.id ELSE NULL END',
               ),
             ),
             'dreamsCount',
@@ -28,7 +28,7 @@ router.get('/', async (req: Request, res: Response) => {
       include: [
         {
           model: UserDream,
-          as: 'userDreams',
+          as: 'dreams',
           attributes: [],
         },
       ],
@@ -55,7 +55,7 @@ router.get('/:id', async (req: Request, res: Response) => {
             Sequelize.fn(
               'COUNT',
               Sequelize.literal(
-                'CASE WHEN userDreams.deletedAt IS NULL THEN userDreams.id ELSE NULL END',
+                'CASE WHEN dreams.deletedAt IS NULL THEN dreams.id ELSE NULL END',
               ),
             ),
             'screenshotCount',
@@ -65,7 +65,7 @@ router.get('/:id', async (req: Request, res: Response) => {
             Sequelize.fn(
               'SUM',
               Sequelize.literal(
-                'CASE WHEN userDreams.deletedAt IS NULL THEN userDreams.views ELSE 0 END',
+                'CASE WHEN dreams.deletedAt IS NULL THEN dreams.views ELSE 0 END',
               ),
             ),
             'totalViews',
@@ -76,7 +76,7 @@ router.get('/:id', async (req: Request, res: Response) => {
       include: [
         {
           model: UserDream,
-          as: 'userDreams',
+          as: 'dreams',
           attributes: [],
         },
         {
