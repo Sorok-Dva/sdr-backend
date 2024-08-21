@@ -9,7 +9,7 @@ import { generateToken } from '../helpers/helpers'
 import { espClient } from '../connectors'
 import emailHelper from '../helpers/emailHelper'
 import { authenticateToken } from '../middleware/auth'
-import { UserDream, User } from '../models'
+import { UserDream, User, NicknameChange } from '../models'
 import { logger } from '../lib'
 
 dotenv.config()
@@ -279,7 +279,8 @@ authRouter.post(
 
       const sixMonthsAgo = dayjs().subtract(6, 'months')
       if (user.lastNicknameChange
-        && dayjs(user.lastNicknameChange).isAfter(sixMonthsAgo)) {
+        && dayjs(user.lastNicknameChange).isAfter(sixMonthsAgo)
+        && user.roleId !== 1) {
         return res.status(400).json({
           error: 'Vous ne pouvez changer de pseudo qu\'une fois tous les 6 mois',
         })
@@ -291,6 +292,14 @@ authRouter.post(
       await user.save()
 
       log.info(`${req.user.nickname} has changed his nickname to ${nickname}`)
+
+      await NicknameChange.create({
+        userId: req.user.id,
+        oldNickname: req.user.nickname,
+        newNickname: nickname,
+      })
+      req.user.nickname = nickname
+
       return res.status(200).json({ message: 'Pseudo mis à jour avec succès' })
     } catch (error) {
       log.error('Erreur lors de la mise à jour du pseudo:', error)
