@@ -391,12 +391,12 @@ authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Req
       return res.sendStatus(404)
     }
 
-    const totalDreams = user?.dreams?.length
-    const publicDreams = user?.dreams?.filter(s => s.privacy === 'public').length
+    const totalDreams = user?.dreams?.length ?? 0
+    const publicDreams = user?.dreams?.filter(s => s.privacy === 'public').length ?? 0
     const totalViews = user?.dreams?.reduce((
       sum: number,
       dream: UserDream,
-    ) => sum + dream.views, 0)
+    ) => sum + dream.views, 0) ?? 0
 
     res.json({
       id: user.id,
@@ -404,6 +404,8 @@ authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Req
       avatar: user.avatar,
       isAdmin: user.roleId === 1,
       validated: user.validated,
+      points: user.points,
+      createdAt: user.createdAt,
       totalDreams,
       publicDreams,
       totalViews,
