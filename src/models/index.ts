@@ -8,6 +8,7 @@ import { Report } from './Report'
 import { Role } from './Role'
 import { Tutorial } from './Tutorial'
 import { UserDream } from './UserDream'
+import { NicknameChange } from './NicknameChange'
 
 // Associations
 
@@ -55,6 +56,10 @@ Upvote.belongsTo(Comment, { foreignKey: 'commentId', as: 'comment' })
 User.hasMany(Upvote, { foreignKey: 'userId', as: 'commentUpvotes' })
 Upvote.belongsTo(User, { foreignKey: 'userId', as: 'user' })
 
+// User and Nickname changes
+User.hasMany(NicknameChange, { foreignKey: 'userId', as: 'nicknameChanges' })
+NicknameChange.belongsTo(User, { foreignKey: 'userId', as: 'user' })
+
 export {
   Role,
   User,
@@ -65,5 +70,6 @@ export {
   Category,
   Comment,
   Upvote,
+  NicknameChange,
   sequelize,
 }
