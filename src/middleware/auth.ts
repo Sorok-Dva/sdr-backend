@@ -24,21 +24,32 @@ const jwtSecret = process.env.JWT_SECRET || 'default_secret'
  * @param {Response} res - The response object.
  * @param {NextFunction} next - The next middleware function.
  */
-export const authenticateToken = (
+export const authenticateToken = async (
   req: Request,
   res: Response,
   next: NextFunction,
-) => {
+): Promise<Response | void> => {
   const authHeader = req.headers.authorization
   const token = authHeader && authHeader.split(' ')[1]
 
-  if (!authHeader || !token) return res.sendStatus(401)
+  if (!authHeader || !token) {
+    return res.sendStatus(401)
+  }
 
-  jwt.verify(token, jwtSecret, (err, user) => {
-    if (err) return res.sendStatus(403)
-    req.user = user as User
-    next()
-  })
+  try {
+    const user = jwt.verify(token, jwtSecret) as User
+
+    if (user?.id) {
+      const dbUser = await User.findByPk(user.id)
+      if (!dbUser) {
+        return res.sendStatus(403) // User not found
+      }
+      req.user = dbUser as User
+    }
+    return next()
+  } catch (err) {
+    return res.sendStatus(403)
+  }
 }
 
 /**
