@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express'
-import { col, fn, literal, Op, Sequelize } from 'sequelize'
+import { col, fn, literal, Op, Order, Sequelize } from 'sequelize'
 import { slugify } from '../helpers/helpers'
 import {
   authenticateOptionalToken,
@@ -11,6 +11,22 @@ const tutorialRouter = express.Router()
 
 tutorialRouter.get('/', authenticateOptionalToken, async (req: Request, res: Response) => {
   try {
+    const { type = null } = req.query
+
+    let order: Order
+
+    switch (type) {
+      case 'mostViewed':
+        order = [['views', 'DESC']]
+        break
+      case 'mostLiked':
+        order = [[fn('COUNT', col('upvotes.id')), 'DESC']]
+        break
+      default:
+        order = [['createdAt', 'DESC']]
+        break
+    }
+
     const tutorials = await Tutorial.findAll({
       where: {
         validated: true,
@@ -40,6 +56,7 @@ tutorialRouter.get('/', authenticateOptionalToken, async (req: Request, res: Res
         ],
       },
       group: ['Tutorial.id', 'user.id'],
+      order,
     })
 
     return res.json(tutorials)
