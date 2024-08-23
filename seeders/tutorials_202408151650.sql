@@ -1,4 +1,4 @@
-INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,validatedByUserId,createdAt,updatedAt,deletedAt,image,upvote) VALUES
+INSERT INTO sdr_local.tutorials (userId,categoryId,title,content,views,validated,validatedByUserId,createdAt,updatedAt,deletedAt,image,upvote) VALUES
 	 (1,1,'Technique WILD pour Rêves Lucides','<h2>Tutoriel Complet : Technique WILD pour R&ecirc;ves Lucides</h2>
 <p>La m&eacute;thode WILD, ou <strong>Wake-Initiated Lucid Dream</strong>, est l''une des techniques les plus puissantes pour induire des r&ecirc;ves lucides. Elle consiste &agrave; passer directement d''un &eacute;tat d''&eacute;veil &agrave; un r&ecirc;ve tout en gardant sa conscience active. Cette technique est r&eacute;put&eacute;e pour &ecirc;tre plus avanc&eacute;e, mais avec de la pratique, m&ecirc;me un d&eacute;butant peut y parvenir.</p>
 <h3>&Eacute;tape 1 : Pr&eacute;paration Avant de Dormir</h3>
@@ -402,7 +402,7 @@ INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,va
 <footer>
 <p>Pour plus d''informations sur les r&ecirc;ves lucides et d''autres techniques, visitez nos autres : <a style="color: #ff69b4;" href="../../tutorials" target="_blank" rel="noopener">Tutoriels &amp; guides</a></p>
 </footer>',2,1,1,'2024-08-15 12:44:55','2024-08-15 12:44:55',NULL,'https://screen-me.cloud/uploads/screenshots/screenshots-1723725876277-960919100.png',0);
-INSERT INTO oldsdr.tutorials (userId,categoryId,title,content,views,validated,validatedByUserId,createdAt,updatedAt,deletedAt,image,upvote) VALUES
+INSERT INTO sdr_local.tutorials (userId,categoryId,title,content,views,validated,validatedByUserId,createdAt,updatedAt,deletedAt,image,upvote) VALUES
 	 (1,1,'Tutoriel Complet sur la Méthode WBTB','<blockquote>
 <p>Bienvenue dans ce guide d&eacute;taill&eacute; sur la <strong>m&eacute;thode WBTB</strong> (Wake Back to Bed), une technique populaire pour induire des r&ecirc;ves lucides. WBTB est efficace car elle exploite les cycles de sommeil naturels, vous permettant de vous r&eacute;veiller au moment id&eacute;al pour entrer dans un r&ecirc;ve lucide.</p>
 </blockquote>
