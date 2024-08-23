@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express'
 import { body, validationResult } from 'express-validator'
 import { Op } from 'sequelize'
+import addPointsToUser from '../middleware/points'
 import {
   authenticateOptionalToken,
   authenticateToken,
@@ -82,6 +83,7 @@ dreamsRouter.post(
         // category: 'joy',
       })
 
+      await addPointsToUser(req.user.id, 50)
       res.status(201).send(dream)
     } catch (error: unknown) {
       res.status(500).send({ error })
