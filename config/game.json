@@ -1,0 +1,9 @@
+{
+  "actions": {
+    "points": {
+      "add": {
+        "ADD_DREAM": 10
+      }
+    }
+  }
+}
