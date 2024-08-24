@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express'
-import addPointsToUser from '../middleware/points'
+import addPointsToUser from '../utils/addPointsToUser'
 
 const notifRouter = express.Router()
 const sessions = new Map<number, { notify:(data: any) => void }>()
@@ -12,7 +12,6 @@ notifRouter.get('/', (req: Request, res: Response) => {
   const userId = parseInt(req.query.userId as string, 10)
 
   const notify = (data: unknown) => {
-    console.log(`data: ${JSON.stringify(data)}\n\n`)
     res.write(`data: ${JSON.stringify(data)}\n\n`)
   }
 
@@ -31,14 +30,9 @@ notifRouter.get('/test', (req: Request, res: Response) => {
 })
 
 const notifyLevelUp = (userId: number, title: string) => {
-  console.log('notifyLevelUp')
   const session = sessions.get(userId)
-  console.log('session', session)
   if (session?.notify) {
-    // session.notify({ userId, title })
-    const data = JSON.stringify({ userId, title })
-    session.notify(`data: ${data}\n\n`)
-    console.log('notified')
+    session.notify({ userId, title })
   }
 }
 
