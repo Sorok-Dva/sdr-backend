@@ -112,12 +112,13 @@ router.put('/:id', async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'User not found' })
     }
     if (req.body.points && user.points !== req.body.points) {
-      await addPointsToUser(user.id, req.body.points)
+      await addPointsToUser(user.id, req.body.points, 'set')
       delete req.body.points
     }
     await user.update(req.body)
     return res.status(200).json(user)
   } catch (err) {
+    console.log(err)
     return res.status(500).json({ error: 'Failed to update user' })
   }
 })

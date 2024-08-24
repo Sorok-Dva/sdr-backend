@@ -5,11 +5,13 @@ import { User, Level } from '../models'
 const addPointsToUser = async (
   userId: number,
   points: number,
+  action: 'set' | 'add' = 'add',
 ): Promise<void> => {
   const user = await User.findByPk(userId)
   if (!user) return
 
-  user.points += points
+  if (action === 'add') user.points += points
+  else if (action === 'set') user.points = points
 
   const currentLevel = await Level.findOne({
     where: {
