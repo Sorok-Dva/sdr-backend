@@ -3,7 +3,8 @@
     "points": {
       "add": {
         "ADD_DREAM": 10,
-        "ADD_VOTE": 2
+        "ADD_VOTE": 2,
+        "COMMENT": 15
       }
     }
   }
