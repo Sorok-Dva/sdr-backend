@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express'
 import { Sequelize } from 'sequelize'
 import { Role, UserDream, User, NicknameChange } from '../../models'
 import { authenticateToken, isAdmin } from '../../middleware/auth'
+import addPointsToUser from '../../utils/addPointsToUser'
 
 const router = express.Router()
 
@@ -109,6 +110,10 @@ router.put('/:id', async (req: Request, res: Response) => {
     const user = await User.findByPk(req.params.id)
     if (!user) {
       return res.status(404).json({ error: 'User not found' })
+    }
+    if (req.body.points && user.points !== req.body.points) {
+      await addPointsToUser(user.id, req.body.points)
+      delete req.body.points
     }
     await user.update(req.body)
     return res.status(200).json(user)
