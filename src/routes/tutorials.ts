@@ -6,6 +6,11 @@ import {
   authenticateToken, isAdmin,
 } from '../middleware/auth'
 import { Upvote, Comment, Tutorial, User, Category } from '../models'
+import { logger } from '../lib'
+import addPointsToUser from '../utils/addPointsToUser'
+import game from '../../config/game.json'
+
+const log = logger('tutorials')
 
 const tutorialRouter = express.Router()
 
@@ -47,6 +52,10 @@ tutorialRouter.get('/', authenticateOptionalToken, async (req: Request, res: Res
           model: Upvote,
           as: 'upvotes',
           attributes: [],
+          where: {
+            deletedAt: { [Op.is]: null },
+          },
+          required: false,
         },
       ],
       attributes: {
@@ -61,7 +70,7 @@ tutorialRouter.get('/', authenticateOptionalToken, async (req: Request, res: Res
 
     return res.json(tutorials)
   } catch (error) {
-    console.error('Failed to fetch tutorials:', error)
+    log.error('Failed to fetch tutorials:', error)
     return res.status(500).json({ error: 'Failed to fetch tutorials' })
   }
 })
@@ -139,7 +148,7 @@ tutorialRouter.get('/latest', async (req, res) => {
 
     res.json(latestTutorials)
   } catch (error) {
-    console.log(error)
+    log.error(error)
     res.status(500).json({ error: 'Failed to fetch latest tutorials' })
   }
 })
@@ -151,7 +160,7 @@ tutorialRouter.get('/categories', authenticateToken, async (req: Request, res: R
     })
     return res.json(categories)
   } catch (error) {
-    console.log(error)
+    log.error(error)
     return res.status(500).json({ error: 'Failed to fetch categories' })
   }
 })
@@ -184,21 +193,6 @@ tutorialRouter.post('/categories', authenticateToken, isAdmin, async (req: Reque
   }
 })
 
-tutorialRouter.get('/top', authenticateToken, async (req: Request, res: Response) => {
-  const tutorials = await Tutorial.findAll({
-    where: {
-      deletedAt: { [Op.is]: null },
-    },
-    attributes: ['id', 'title', 'views'],
-    order: [['views', 'DESC']],
-    limit: 2,
-  })
-  return res.json(tutorials.map(tutorial => ({
-    ...tutorial.dataValues,
-    slug: slugify(tutorial.title),
-  })))
-})
-
 tutorialRouter.post('/:id/upvote', authenticateToken, async (req: Request, res: Response) => {
   try {
     const { id } = req.params
@@ -211,22 +205,45 @@ tutorialRouter.post('/:id/upvote', authenticateToken, async (req: Request, res: 
     }
 
     const existingUpvote = await Upvote.findOne({
-      where: { userId, tutorialId: id },
+      where: {
+        userId,
+        tutorialId: id,
+        deletedAt: null,
+      },
     })
 
+    // remove upvote
     if (existingUpvote) {
       tutorial.upvote -= 1
+      existingUpvote.deletedAt = new Date()
       await tutorial.save()
-      await existingUpvote.destroy()
+      await existingUpvote.save()
       return res.status(200).json(tutorial)
     }
 
     await Upvote.create({ userId, tutorialId: parseInt(id, 10) })
     tutorial.upvote += 1
     await tutorial.save()
-    res.status(200).json(tutorial)
+
+    // gamification
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+
+    const votesTodayCount = await Upvote.count({
+      where: {
+        userId: req.user.id,
+        createdAt: {
+          [Op.gte]: today,
+        },
+      },
+    })
+
+    if (votesTodayCount < 10) {
+      await addPointsToUser(req.user.id, game.actions.points.add.ADD_VOTE)
+    }
+    return res.status(200).json(tutorial)
   } catch (error) {
-    console.log(error)
+    log.error(error)
     res.status(500).json({ error: 'Failed to upvote tutorial' })
   }
 })
