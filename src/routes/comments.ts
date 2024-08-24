@@ -4,6 +4,8 @@ import {
   authenticateToken,
 } from '../middleware/auth'
 import { Comment, Upvote, User } from '../models'
+import addPointsToUser from '../utils/addPointsToUser'
+import game from '../../config/game.json'
 
 const commentRouter = express.Router()
 
@@ -104,14 +106,32 @@ commentRouter.post('/:id/upvote', async (req: Request, res: Response) => {
     }
 
     const existingUpvote = await Upvote.findOne({
-      where: { userId, commentId: id },
+      where: { userId, commentId: id, deletedAt: null },
     })
 
     if (existingUpvote) {
       comment.upvote -= 1
+      existingUpvote.deletedAt = new Date()
       await comment.save()
-      await existingUpvote.destroy()
+      await existingUpvote.save()
       return res.status(200).json(comment)
+    }
+
+    // gamification
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+
+    const votesTodayCount = await Upvote.count({
+      where: {
+        userId: req.user.id,
+        createdAt: {
+          [Op.gte]: today,
+        },
+      },
+    })
+
+    if (votesTodayCount < 10) {
+      await addPointsToUser(req.user.id, game.actions.points.add.ADD_VOTE)
     }
 
     await Upvote.create({ userId, commentId: parseInt(id, 10) })

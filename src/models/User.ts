@@ -11,6 +11,8 @@ interface UserAttributes {
   password: string
   roleId: number
   points: number
+  level: number
+  title: string
   validated: boolean
   resetPasswordToken?: string | null
   resetPasswordExpires?: Date | null
@@ -28,7 +30,7 @@ interface UserAttributes {
  */
 type UserCreationAttributes = Optional<
   UserAttributes,
-  'id' | 'oldEmail' | 'points' | 'lastNicknameChange'
+  'id' | 'oldEmail' | 'points' | 'lastNicknameChange' | 'level' | 'title'
 >
 
 /**
@@ -54,6 +56,10 @@ class User extends Model<UserAttributes, UserCreationAttributes>
   public roleId!: number
 
   public points!: number
+
+  public level!: number
+
+  public title!: string
 
   public validated!: boolean
 
@@ -116,6 +122,16 @@ class User extends Model<UserAttributes, UserCreationAttributes>
           type: DataTypes.INTEGER,
           allowNull: false,
           defaultValue: 0,
+        },
+        level: {
+          type: DataTypes.INTEGER,
+          defaultValue: 1,
+          allowNull: false,
+        },
+        title: {
+          type: DataTypes.STRING,
+          defaultValue: 'Rêveur',
+          allowNull: true,
         },
         resetPasswordToken: {
           type: DataTypes.STRING,

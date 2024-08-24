@@ -8,6 +8,7 @@ interface CommentUpvoteAttributes {
   tutorialId?: number
   createdAt?: Date
   updatedAt?: Date
+  deletedAt?: Date | null
 }
 
 type CommentUpvoteCreationAttributes = Optional<
@@ -27,6 +28,8 @@ class Upvote extends Model<CommentUpvoteAttributes, CommentUpvoteCreationAttribu
   public readonly createdAt!: Date
 
   public readonly updatedAt!: Date
+
+  public deletedAt!: Date | null
 
   static initialize (sequelize: Sequelize) {
     this.init(
@@ -59,6 +62,10 @@ class Upvote extends Model<CommentUpvoteAttributes, CommentUpvoteCreationAttribu
             model: 'comments',
             key: 'id',
           },
+        },
+        deletedAt: {
+          type: DataTypes.DATE,
+          allowNull: true,
         },
       },
       {

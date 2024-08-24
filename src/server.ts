@@ -12,6 +12,8 @@ import dreamsRouter from './routes/dreams'
 import tutorialsRouter from './routes/tutorials'
 import commentsRouter from './routes/comments'
 import adminRouter from './routes/admin'
+import levelsRouter from './routes/levels'
+import notifRouter from './routes/notifications'
 import { logger, Icon } from './lib'
 
 dotenv.config()
@@ -55,6 +57,8 @@ app.use('/api/admin', adminRouter)
 app.use('/api/dreams', dreamsRouter)
 app.use('/api/tutorials', tutorialsRouter)
 app.use('/api/comments', commentsRouter)
+app.use('/api/levels', levelsRouter)
+app.use('/api/notifications', notifRouter)
 app.use(authRouter)
 
 if (process.env.SENTRY_DSN) Sentry.setupExpressErrorHandler(app)

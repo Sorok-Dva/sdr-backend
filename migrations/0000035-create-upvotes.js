@@ -42,6 +42,10 @@ module.exports = {
         allowNull: false,
         defaultValue: DataTypes.NOW,
       },
+      deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
     });
   },
   down: async (queryInterface) => {

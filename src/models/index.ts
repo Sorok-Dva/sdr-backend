@@ -7,6 +7,7 @@ import { sequelize } from '../sequelize'
 import { Report } from './Report'
 import { Role } from './Role'
 import { Tutorial } from './Tutorial'
+import { Level } from './Level'
 import { UserDream } from './UserDream'
 import { NicknameChange } from './NicknameChange'
 
@@ -71,5 +72,6 @@ export {
   Comment,
   Upvote,
   NicknameChange,
+  Level,
   sequelize,
 }
