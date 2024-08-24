@@ -2,7 +2,8 @@
   "actions": {
     "points": {
       "add": {
-        "ADD_DREAM": 10
+        "ADD_DREAM": 10,
+        "ADD_VOTE": 2
       }
     }
   }
