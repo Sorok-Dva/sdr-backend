@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express'
+import addPointsToUser from '../middleware/points'
 
 const notifRouter = express.Router()
 const sessions = new Map<number, { notify:(data: any) => void }>()
@@ -21,6 +22,12 @@ notifRouter.get('/', (req: Request, res: Response) => {
     sessions.delete(userId)
     res.end()
   })
+})
+
+notifRouter.get('/test', (req: Request, res: Response) => {
+  addPointsToUser(1, 100)
+  addPointsToUser(1, -100)
+  res.status(200).send('ok')
 })
 
 const notifyLevelUp = (userId: number, title: string) => {
