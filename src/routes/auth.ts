@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
 import { body, validationResult } from 'express-validator'
 import dotenv from 'dotenv'
-import { Op } from 'sequelize'
+import { Op, Sequelize } from 'sequelize'
 import dayjs from 'dayjs'
 import { generateToken } from '../helpers/helpers'
 import { espClient } from '../connectors'
@@ -11,6 +11,7 @@ import emailHelper from '../helpers/emailHelper'
 import { authenticateToken } from '../middleware/auth'
 import { UserDream, User, NicknameChange } from '../models'
 import { logger } from '../lib'
+import levelsRouter from './levels'
 
 dotenv.config()
 
@@ -420,5 +421,43 @@ authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Req
     res.sendStatus(500)
   }
 })
+
+authRouter.get('/api/users/leaderboard', async (req: Request, res: Response) => {
+  try {
+    const users = await User.findAll({
+      attributes: {
+        include: [
+          'nickname',
+          'avatar',
+          'points',
+          'level',
+          'title',
+          [
+            Sequelize.fn(
+              'COUNT',
+              Sequelize.literal(
+                'CASE WHEN dreams.deletedAt IS NULL THEN dreams.id ELSE NULL END'
+              ),
+            ),
+            'dreamsCount',
+          ],
+        ],
+      },
+      include: [
+        {
+          model: UserDream,
+          as: 'dreams',
+          attributes: [],
+        },
+      ],
+      group: ['User.id'],
+      order: [['level', 'DESC']],
+    })
+    return res.status(200).json(users)
+  } catch (error) {
+    console.error('Failed to fetch leaderboard:', error);
+    res.status(500).json({ error: 'Failed to fetch leaderboard' });
+  }
+});
 
 export default authRouter
