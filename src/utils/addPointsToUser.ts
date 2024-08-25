@@ -23,7 +23,9 @@ const addPointsToUser = async (
   })
 
   if (currentLevel) {
-    if (currentLevel.title !== user.title) notifyLevelUp(user.id, user.title)
+    if (currentLevel.title !== user.title) {
+      notifyLevelUp(user.id, currentLevel.title)
+    }
     user.level = currentLevel.level
     user.title = currentLevel.title
   }
