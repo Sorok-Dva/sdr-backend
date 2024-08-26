@@ -19,13 +19,20 @@ levelsRouter.get('/next', async (req: Request, res: Response) => {
         },
       },
       order: [['pointsRequired', 'ASC']],
+      attributes: ['id', 'level', 'pointsRequired', 'title'],
     })
 
     if (!nextLevel) {
       return res.status(404).json({ message: 'You have reached the highest level.' })
     }
 
-    return res.json(nextLevel)
+    const actualLevel = await Level.findOne({
+      where: {
+        level: nextLevel.level - 1,
+      },
+    })
+
+    return res.json({ ...nextLevel.dataValues, lastTitle: actualLevel?.title })
   } catch (error) {
     console.error('Error fetching next level:', error)
     return res.status(500).json({ error: 'Failed to fetch the next level.' })

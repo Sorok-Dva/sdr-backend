@@ -1,7 +1,9 @@
 import express, { Request, Response } from 'express'
 import { Sequelize } from 'sequelize'
+import { body } from 'express-validator'
 import { Role, UserDream, User, NicknameChange } from '../../models'
 import { authenticateToken, isAdmin } from '../../middleware/auth'
+import addPointsToUser from '../../utils/addPointsToUser'
 
 const router = express.Router()
 
@@ -58,7 +60,7 @@ router.get('/:id', async (req: Request, res: Response) => {
                 'CASE WHEN dreams.deletedAt IS NULL THEN dreams.id ELSE NULL END',
               ),
             ),
-            'screenshotCount',
+            'dreamsCount',
           ],
           // Sum the views of non-deleted userDreams belonging to the user
           [
@@ -71,7 +73,11 @@ router.get('/:id', async (req: Request, res: Response) => {
             'totalViews',
           ],
         ],
-        exclude: ['password', 'roleId'],
+        exclude: [
+          'password',
+          'resetPasswordToken',
+          'roleId',
+        ],
       },
       include: [
         {
@@ -110,12 +116,42 @@ router.put('/:id', async (req: Request, res: Response) => {
     if (!user) {
       return res.status(404).json({ error: 'User not found' })
     }
+    if (req.body.points && user.points !== req.body.points) {
+      await addPointsToUser(user.id, req.body.points, 'set')
+      delete req.body.points
+    }
     await user.update(req.body)
     return res.status(200).json(user)
   } catch (err) {
+    console.log(err)
     return res.status(500).json({ error: 'Failed to update user' })
   }
 })
+
+router.post(
+  '/:id/add-points',
+  [
+    body('points').notEmpty().isNumeric().withMessage('Points must be numeric'),
+  ],
+  async (req: Request, res: Response) => {
+    try {
+      const user = await User.findByPk(req.params.id)
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' })
+      }
+      if (req.body.points && user.points !== req.body.points) {
+        await addPointsToUser(user.id, req.body.points, 'add')
+      }
+      return res.status(200).json({
+        ...user,
+        points: user.points + req.body.points,
+      })
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json({ error: 'Failed to update user points' })
+    }
+  },
+)
 
 router.delete('/:id', async (req: Request, res: Response) => {
   try {
