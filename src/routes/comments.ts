@@ -51,7 +51,10 @@ commentRouter.post('/', async (req: Request, res: Response) => {
       },
     })
 
-    await addPointsToUser(req.user.id, game.actions.points.add.COMMENT)
+    await addPointsToUser(req.user.id, game.actions.points.add.COMMENT, {
+      fromSystem: true,
+      description: 'Vous avez commenter un tutoriel',
+    })
 
     return res.status(201).json(fullComment)
   } catch (error) {
