@@ -23,9 +23,17 @@ notifRouter.get('/', (req: Request, res: Response) => {
   })
 })
 
-notifRouter.get('/test', (req: Request, res: Response) => {
-  addPointsToUser(1, 100)
-  addPointsToUser(1, -100)
+notifRouter.get('/test', async (req: Request, res: Response) => {
+  await addPointsToUser(1, 100, {
+    fromSystem: false,
+    fromUserId: req?.user?.id ?? null,
+    description: 'Votre solde de points a été modifié pour un test',
+  })
+  await addPointsToUser(1, -100, {
+    fromSystem: false,
+    fromUserId: req?.user?.id ?? null,
+    description: 'Votre solde de points a été modifié pour un test',
+  })
   res.status(200).send('ok')
 })
 

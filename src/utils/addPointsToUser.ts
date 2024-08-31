@@ -1,10 +1,15 @@
 import { Op } from 'sequelize'
 import { notifyLevelUp } from '../routes/notifications'
-import { User, Level } from '../models'
+import { User, Level, PointHistory } from '../models'
 
 const addPointsToUser = async (
   userId: number,
   points: number,
+  options: {
+    fromSystem: boolean
+    description: string
+    fromUserId?: number
+  },
   action: 'set' | 'add' = 'add',
 ): Promise<void> => {
   const user = await User.findByPk(userId)
@@ -31,6 +36,15 @@ const addPointsToUser = async (
   }
 
   await user.save()
+
+  await PointHistory.create({
+    userId: user.id,
+    points,
+    fromSystem: options.fromSystem,
+    description: options.description,
+    fromUserId: options.fromUserId,
+    type: points < 0 ? 'remove' : action,
+  })
 }
 
 export default addPointsToUser

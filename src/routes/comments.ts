@@ -51,7 +51,12 @@ commentRouter.post('/', async (req: Request, res: Response) => {
       },
     })
 
-    res.status(201).json(fullComment)
+    await addPointsToUser(req.user.id, game.actions.points.add.COMMENT, {
+      fromSystem: true,
+      description: 'Vous avez commenter un tutoriel',
+    })
+
+    return res.status(201).json(fullComment)
   } catch (error) {
     console.log(error)
     res.status(500).json({ error: 'Failed to add comment' })
@@ -131,7 +136,10 @@ commentRouter.post('/:id/upvote', async (req: Request, res: Response) => {
     })
 
     if (votesTodayCount < 10) {
-      await addPointsToUser(req.user.id, game.actions.points.add.ADD_VOTE)
+      await addPointsToUser(req.user.id, game.actions.points.add.ADD_VOTE, {
+        fromSystem: true,
+        description: 'Vous avez voter pour un commentaire',
+      })
     }
 
     await Upvote.create({ userId, commentId: parseInt(id, 10) })
