@@ -10,6 +10,7 @@ import { Tutorial } from './Tutorial'
 import { Level } from './Level'
 import { UserDream } from './UserDream'
 import { NicknameChange } from './NicknameChange'
+import { PointHistory } from './PointHistory'
 
 // Associations
 
@@ -61,6 +62,11 @@ Upvote.belongsTo(User, { foreignKey: 'userId', as: 'user' })
 User.hasMany(NicknameChange, { foreignKey: 'userId', as: 'nicknameChanges' })
 NicknameChange.belongsTo(User, { foreignKey: 'userId', as: 'user' })
 
+// User and Point History
+User.hasMany(PointHistory, { foreignKey: 'userId', as: 'pointsHistory' })
+PointHistory.belongsTo(User, { foreignKey: 'userId', as: 'user' })
+PointHistory.belongsTo(User, { foreignKey: 'fromUserId', as: 'fromUser' })
+
 export {
   Role,
   User,
@@ -73,5 +79,6 @@ export {
   Upvote,
   NicknameChange,
   Level,
+  PointHistory,
   sequelize,
 }
