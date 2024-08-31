@@ -117,7 +117,11 @@ router.put('/:id', async (req: Request, res: Response) => {
       return res.status(404).json({ error: 'User not found' })
     }
     if (req.body.points && user.points !== req.body.points) {
-      await addPointsToUser(user.id, req.body.points, 'set')
+      await addPointsToUser(user.id, req.body.points, {
+        fromSystem: false,
+        fromUserId: req.user.id,
+        description: 'Votre solde de points a été modifié par l\'équipe de modération',
+      }, 'set')
       delete req.body.points
     }
     await user.update(req.body)
@@ -140,7 +144,13 @@ router.post(
         return res.status(404).json({ error: 'User not found' })
       }
       if (req.body.points && user.points !== req.body.points) {
-        await addPointsToUser(user.id, req.body.points, 'add')
+        await addPointsToUser(user.id, req.body.points, {
+          fromSystem: false,
+          fromUserId: req.user.id,
+          description: req.body.points < 0
+            ? 'Vous avez perdu des points de la part de l\'équipe de modération'
+            : 'Vous avez gagner des points de la part de l\'équipe de modération',
+        }, 'add')
       }
       return res.status(200).json({
         ...user,

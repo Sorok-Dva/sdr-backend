@@ -131,7 +131,10 @@ commentRouter.post('/:id/upvote', async (req: Request, res: Response) => {
     })
 
     if (votesTodayCount < 10) {
-      await addPointsToUser(req.user.id, game.actions.points.add.ADD_VOTE)
+      await addPointsToUser(req.user.id, game.actions.points.add.ADD_VOTE, {
+        fromSystem: true,
+        description: 'Vous avez voter pour un commentaire',
+      })
     }
 
     await Upvote.create({ userId, commentId: parseInt(id, 10) })

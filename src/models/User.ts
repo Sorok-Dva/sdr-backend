@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional, Sequelize } from 'sequelize'
 import { UserDream } from './UserDream'
+import { PointHistory } from './PointHistory'
 import { sequelize } from '../sequelize'
 
 interface UserAttributes {
@@ -76,6 +77,8 @@ class User extends Model<UserAttributes, UserCreationAttributes>
   public deletedAt!: Date | null
 
   public readonly dreams?: UserDream[]
+
+  public readonly pointsHistory?: PointHistory[]
 
   static initialize (sequelize: Sequelize) {
     this.init(

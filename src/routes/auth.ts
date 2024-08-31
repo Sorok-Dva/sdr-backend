@@ -9,9 +9,8 @@ import { generateToken } from '../helpers/helpers'
 import { espClient } from '../connectors'
 import emailHelper from '../helpers/emailHelper'
 import { authenticateToken } from '../middleware/auth'
-import { UserDream, User, NicknameChange } from '../models'
+import { UserDream, User, NicknameChange, PointHistory } from '../models'
 import { logger } from '../lib'
-import levelsRouter from './levels'
 
 dotenv.config()
 
@@ -378,17 +377,33 @@ authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Req
   try {
     const user = await User.findOne({
       where: { nickname },
-      include: [{
-        model: UserDream,
-        as: 'dreams',
-        attributes: ['id', 'privacy', 'views', 'deletedAt'],
-        where: {
-          deletedAt: {
-            [Op.is]: null,
+      include: [
+        {
+          model: UserDream,
+          as: 'dreams',
+          attributes: ['id', 'privacy', 'views', 'deletedAt'],
+          where: {
+            deletedAt: {
+              [Op.is]: null,
+            },
           },
+          required: false,
         },
-        required: false,
-      }],
+        {
+          model: PointHistory,
+          as: 'pointsHistory',
+          attributes: ['points', 'description', 'fromSystem', 'type', 'createdAt'],
+          include: [
+            {
+              model: User,
+              as: 'fromUser',
+              attributes: ['nickname'],
+            },
+          ],
+          required: false,
+        },
+      ],
+      order: [[{ model: PointHistory, as: 'pointsHistory' }, 'createdAt', 'DESC']],
     })
 
     if (!user) {
@@ -415,6 +430,7 @@ authRouter.get('/api/user/profile/:nickname', authenticateToken, async (req: Req
       totalDreams,
       publicDreams,
       totalViews,
+      pointsHistory: user.pointsHistory,
     })
   } catch (error) {
     log.error(error)
@@ -436,7 +452,7 @@ authRouter.get('/api/users/leaderboard', async (req: Request, res: Response) => 
             Sequelize.fn(
               'COUNT',
               Sequelize.literal(
-                'CASE WHEN dreams.deletedAt IS NULL THEN dreams.id ELSE NULL END'
+                'CASE WHEN dreams.deletedAt IS NULL THEN dreams.id ELSE NULL END',
               ),
             ),
             'dreamsCount',
@@ -455,9 +471,9 @@ authRouter.get('/api/users/leaderboard', async (req: Request, res: Response) => 
     })
     return res.status(200).json(users)
   } catch (error) {
-    console.error('Failed to fetch leaderboard:', error);
-    res.status(500).json({ error: 'Failed to fetch leaderboard' });
+    console.error('Failed to fetch leaderboard:', error)
+    res.status(500).json({ error: 'Failed to fetch leaderboard' })
   }
-});
+})
 
 export default authRouter
