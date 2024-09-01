@@ -1,5 +1,5 @@
 import { Op } from 'sequelize'
-import { notifyLevelUp } from '../routes/notifications'
+import { notifyLevelUp, notifyWinPoints } from '../routes/notifications'
 import { User, Level, PointHistory } from '../models'
 
 const addPointsToUser = async (
@@ -45,6 +45,8 @@ const addPointsToUser = async (
     fromUserId: options.fromUserId,
     type: points < 0 ? 'remove' : action,
   })
+
+  notifyWinPoints(user.id, points, points < 0)
 }
 
 export default addPointsToUser
