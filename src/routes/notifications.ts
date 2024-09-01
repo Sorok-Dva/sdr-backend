@@ -40,11 +40,19 @@ notifRouter.get('/test', async (req: Request, res: Response) => {
 const notifyLevelUp = (userId: number, title: string) => {
   const session = sessions.get(userId)
   if (session?.notify) {
-    session.notify({ userId, title })
+    session.notify({ event: 'levelUp', userId, title })
+  }
+}
+
+const notifyWinPoints = (userId: number, points: number, loss: boolean) => {
+  const session = sessions.get(userId)
+  if (session?.notify) {
+    session.notify({ event: loss ? 'lossPoints' : 'winPoints', userId, points })
   }
 }
 
 export {
   notifyLevelUp,
+  notifyWinPoints,
 }
 export default notifRouter
