@@ -103,6 +103,7 @@ authRouter.get('/api/users/validate/:token', async (req: Request, res: Response)
       nickname: userToValidate.nickname,
       roleId: userToValidate.roleId,
       isAdmin: userToValidate.roleId === 1,
+      token: userToValidate.token,
     }, jwtSecret, { expiresIn: '31d' })
 
     res.status(201).send({ token: userJwt, message: 'User successfully validated' })
@@ -154,6 +155,7 @@ authRouter.post(
         nickname: user.nickname,
         roleId: user.roleId,
         isAdmin: user.roleId === 1,
+        token: user.token,
       }, jwtSecret, { expiresIn: '31d' })
 
       res.status(200).send({ token: userJwt })
