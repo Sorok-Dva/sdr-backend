@@ -52,6 +52,7 @@ authRouter.post(
         email,
         roleId: 2,
         password: hashedPassword,
+        token: generateToken(),
         nickname,
         resetPasswordToken: generateToken(),
         validated: false,
@@ -181,6 +182,7 @@ authRouter.get('/api/users/me', authenticateToken, async (req: Request, res: Res
     isAdmin: user.roleId === 1,
     lastNicknameChange: user.lastNicknameChange,
     validated: user.validated,
+    token: user.token,
   })
 })
 
