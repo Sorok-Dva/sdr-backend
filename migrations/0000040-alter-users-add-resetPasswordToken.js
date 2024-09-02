@@ -5,7 +5,7 @@ module.exports = {
     await queryInterface.addColumn('users', 'resetPasswordToken', {
       type: Sequelize.STRING,
       allowNull: true,
-      after: 'password'
+      after: 'token'
     });
 
     await queryInterface.addColumn('users', 'resetPasswordExpires', {

@@ -29,7 +29,7 @@ const addPointsToUser = async (
 
   if (currentLevel) {
     if (currentLevel.title !== user.title) {
-      notifyLevelUp(user.id, currentLevel.title)
+      notifyLevelUp(user.token, currentLevel.title)
     }
     user.level = currentLevel.level
     user.title = currentLevel.title
@@ -46,7 +46,7 @@ const addPointsToUser = async (
     type: points < 0 ? 'remove' : action,
   })
 
-  notifyWinPoints(user.id, points, points < 0)
+  notifyWinPoints(user.token, points, points < 0)
 }
 
 export default addPointsToUser

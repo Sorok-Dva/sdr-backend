@@ -10,6 +10,7 @@ interface UserAttributes {
   nickname: string
   avatar?: string
   password: string
+  token: string
   roleId: number
   points: number
   level: number
@@ -53,6 +54,8 @@ class User extends Model<UserAttributes, UserCreationAttributes>
   public avatar!: string
 
   public password!: string
+
+  public token!: string
 
   public roleId!: number
 
@@ -110,6 +113,10 @@ class User extends Model<UserAttributes, UserCreationAttributes>
           defaultValue: '/img/defaultAvatar.png',
         },
         password: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        token: {
           type: DataTypes.STRING,
           allowNull: false,
         },

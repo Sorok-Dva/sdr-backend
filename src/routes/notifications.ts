@@ -2,25 +2,27 @@ import express, { Request, Response } from 'express'
 import addPointsToUser from '../utils/addPointsToUser'
 
 const notifRouter = express.Router()
-const sessions = new Map<number, { notify:(data: any) => void }>()
+const sessions = new Map<string, { notify:(data: any) => void }>()
 
 notifRouter.get('/', (req: Request, res: Response) => {
   res.setHeader('Content-Type', 'text/event-stream')
   res.setHeader('Cache-Control', 'no-cache')
   res.setHeader('Connection', 'keep-alive')
 
-  const userId = parseInt(req.query.userId as string, 10)
+  const { token } = req.query
 
   const notify = (data: unknown) => {
     res.write(`data: ${JSON.stringify(data)}\n\n`)
   }
 
-  sessions.set(userId, { notify })
+  if (typeof token === 'string') {
+    sessions.set(token, { notify })
 
-  req.on('close', () => {
-    sessions.delete(userId)
-    res.end()
-  })
+    req.on('close', () => {
+      sessions.delete(token)
+      res.end()
+    })
+  }
 })
 
 notifRouter.get('/test', async (req: Request, res: Response) => {
@@ -37,17 +39,17 @@ notifRouter.get('/test', async (req: Request, res: Response) => {
   res.status(200).send('ok')
 })
 
-const notifyLevelUp = (userId: number, title: string) => {
-  const session = sessions.get(userId)
+const notifyLevelUp = (token: string, title: string) => {
+  const session = sessions.get(token)
   if (session?.notify) {
-    session.notify({ event: 'levelUp', userId, title })
+    session.notify({ event: 'levelUp', token, title })
   }
 }
 
-const notifyWinPoints = (userId: number, points: number, loss: boolean) => {
-  const session = sessions.get(userId)
+const notifyWinPoints = (token: string, points: number, loss: boolean) => {
+  const session = sessions.get(token)
   if (session?.notify) {
-    session.notify({ event: loss ? 'lossPoints' : 'winPoints', userId, points })
+    session.notify({ event: loss ? 'lossPoints' : 'winPoints', token, points })
   }
 }
 
