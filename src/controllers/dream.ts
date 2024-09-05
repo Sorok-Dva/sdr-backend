@@ -39,7 +39,7 @@ const createDream = async (req: Request, res: Response) => {
     if (dreamsTodayCount === 0) {
       await addPointsToUser(req.user.id, game.actions.points.add.ADD_DREAM, {
         fromSystem: true,
-        description: 'Vous avez ajouter un rêve',
+        description: 'Vous avez ajouté un rêve',
       })
     }
 

@@ -149,7 +149,7 @@ router.post(
           fromUserId: req.user.id,
           description: req.body.points < 0
             ? 'Vous avez perdu des points de la part de l\'équipe de modération'
-            : 'Vous avez gagner des points de la part de l\'équipe de modération',
+            : 'Vous avez gagné des points de la part de l\'équipe de modération',
         }, 'add')
       }
       return res.status(200).json({

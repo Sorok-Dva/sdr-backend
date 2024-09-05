@@ -53,7 +53,7 @@ commentRouter.post('/', async (req: Request, res: Response) => {
 
     await addPointsToUser(req.user.id, game.actions.points.add.COMMENT, {
       fromSystem: true,
-      description: 'Vous avez commenter un tutoriel',
+      description: 'Vous avez commenté un tutoriel',
     })
 
     return res.status(201).json(fullComment)
@@ -138,7 +138,7 @@ commentRouter.post('/:id/upvote', async (req: Request, res: Response) => {
     if (votesTodayCount < 10) {
       await addPointsToUser(req.user.id, game.actions.points.add.ADD_VOTE, {
         fromSystem: true,
-        description: 'Vous avez voter pour un commentaire',
+        description: 'Vous avez voté pour un commentaire',
       })
     }
 

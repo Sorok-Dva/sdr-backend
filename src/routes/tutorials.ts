@@ -241,7 +241,7 @@ tutorialRouter.post('/:id/upvote', authenticateToken, async (req: Request, res: 
     if (votesTodayCount < 10) {
       await addPointsToUser(req.user.id, game.actions.points.add.ADD_VOTE, {
         fromSystem: true,
-        description: 'Vous avez voter pour un tutoriel',
+        description: 'Vous avez voté pour un tutoriel',
       })
     }
     return res.status(200).json(tutorial)
